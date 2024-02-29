@@ -1,27 +1,29 @@
 # Ardublockly
-Ardublockly is a visual programming editor for Arduino. It is based on Google's [Blockly][1], which has been forked to generate [Arduino][15] code.
+`Ardublockly` は、Arduino向けのビジュアルプログラミングエディターです。このフォークは日本語に翻訳する作業を行っています。このシステムは Google's [Blockly][1], のフォークを利用しており、 [Arduino][15] のコードを生成する事ができます。
 
-The `ArdublocklyServer` Python package initialises a local server to be able to compile and load the Arduino code using the [Arduino IDE][2].
+`ArdublocklyServer` は、[Arduino IDE][2] を利用してArduinoコードをコンパイル、およびターゲットにロードできるように、Pythonを利用してローカルサーバーを構築できます。
 
-This is all packaged in a self contained executable desktop application for Windows, Mac OS X, and Linux.
+これらは、Windows、Mac OS X、および Linux で動作する自己完結型の実行可能デスクトップアプリケーションにパッケージ化されています。
 
 ![Ardublockly desktop program screenshot][desktop_screeshot]
 
 
-## Features
-* Generates Arduino code with visual drag-and-drop blocks
-* Uploads the code to an Arduino Board
-* Useful "code block warnings"
-* Compatible with a wide range of official Arduino Boards
-* Works on Windows / Linux / Mac OS X
+## 特徴
+* ブロックをドラッグ&＆ドロップして視覚的にArduinoコードを作成できます
+* コードをArduinoボードにアップロードできます
+* 便利な「コードブロック警告」
+* 幅広い公式Arduinoボードと互換性があります
+* Windows / Linux / Mac OS Xで動作します
 
-Ardublockly is still under development and a few features are not yet implemented. A to-do list can be found in the [TODO.md][3] file.
+Ardublocklyは、まだ開発中であり、いくつかの機能はまだ実装されていません。今後のToDoリストは [TODO.md][3] に記載されています。
 
-Currently tested under Windows with Python 2.7 and 3.4 and in Linux and MacOS X with Python 2.7.
+現在、Windows では Python 2.7 および 3.4 を使用し、Linux および MacOS X では Python 2.7 でテストされています。
+
+(訳者注: ビルド情報: ベースとなるBlocklyは古いバージョンが使用されており、2.7 環境が必須です。また、Google Closure Library のバージョンも古く、一部、オンライン経由で実行される機能が失われています。その為、完全なビルドができません)
 
 
-## Cloning the repository
-Please note that there are submodules in the repository that need initialisation. So, to correctly clone the Ardublockly repository:
+## リポジトリのクローン時にはサブモジュールの初期化を忘れずに
+リポジトリには初期化が必要なサブモジュールがあることに注意してください。Ardublocklyリポジトリを正しくクローンするには、
 
 ```
 git clone https://github.com/carlosperate/ardublockly.git
@@ -30,42 +32,48 @@ git submodule update --init --recursive
 ```
 
 
-## Installing
-The desktop application is available for Windows/Mac/Linux and runs as a stand-alone executable that can be downloaded from the [Ardublockly repository releases page][4].
+## インストール
+デスクトップアプリケーションは Windows / Mac / Linux で利用でき、[Ardublockly repository releases page][4] からスタンドアロンの実行可能ファイルをダウンロードしてください。
 
-You will also need the [Arduino IDE version 1.6.x or higher][2].
+生成されたArduinoコードのビルドとモジュールへのアップロードには、[Arduino IDE バージョン 1.6.x 以降][2]も必要です。
 
-#### Development builds
-You can also test __UNSTABLE__ development builds automatically generated every time an update is added to the GitHub repository:
+#### 開発ビルド
+GitHub リポジトリに更新が追加されるたびに自動的に生成される __UNSTABLE__ 開発ビルドをテストすることもできます。
+
+(訳者注: 現在は正常に稼働していない？)
 
 | Linux build         | Windows build       | Mac OS X build       |
 |:-------------------:|:-------------------:|:--------------------:|
 | [![Linux Build Status](https://circleci.com/gh/carlosperate/ardublockly/tree/master.svg?style=svg)](https://circleci.com/gh/carlosperate/ardublockly/tree/master) | [![Windows Build status](https://ci.appveyor.com/api/projects/status/t877g920hdiifc2i?svg=true)](https://ci.appveyor.com/project/carlosperate/ardublockly) | [![Mac Build Status](https://travis-ci.org/carlosperate/ardublockly.svg?branch=master)](https://travis-ci.org/carlosperate/ardublockly) |
 | [Download Link][12] | [Download Link][13] | [Download Link][14]  |
 
-#### "Core version" (Python server only)
-If you prefer, the core software can be used by running only the Python server, which loads the web interface on your local browser (Chrome recommended).
+#### "Core version" (Python サーバーのみ)
+必要に応じて、ローカル ブラウザ (Chrome を推奨) に Web インターフェイスをロードする Python サーバーのみを実行して、コア ソフトウェアを使用することもできます。
 
-Full installation instructions for this version can be found in [this Github repository Wiki][5].
+このバージョンの完全なインストール手順は、[this Github repository Wiki][5] にあります。
 
-The quick version: Clone this repository, initialise all submodules, and execute:
+簡単な起動方法としては、このリポジトリのクローンを作成し、すべてのサブモジュールを初期化して、
 
 ```
 python start.py
 ```
 
-This will work on Windows, Linux (including ARM) and Mac OS X, with Python >2.7 or >3.4
+これは、Python > 2.7 または > 3.4 を搭載した、 Windows、Linux (ARM を含む)、Mac OS X で動作します。
+
+(訳者注: Python の仕様変更に伴い < 3.8 であること。Windows 3.6.8 で動作確認済み)
 
 
-## Running
-1. [Install Ardublockly][5].
-2. Install the [Arduino IDE][2] version 1.6.x or higher (latest version is always recommended).
-3. Run Ardublockly as defined in your installation method.
-3. Configure Ardublockly to locate the Arduino IDE [following these instructions][6].
+## 起動方法
+1. [Ardublocklyをインストール][5].
+2. [Arduino IDE][2] バージョン 1.6.x 以降をインストールします (常に最新バージョンを推奨します)。
+3. インストール方法の定義に従って Ardublockly を実行します。
+3. Ardublocklyの設定を開き、Arduino IDEのパスを設定します [following these instructions][6]。
 
 
-## Online Demos
-A demo of the latest release of Ardublockly main interface can be found in the following two links (to load the code into an Arduino it requires the full Ardublockly application to be downloaded and run on your computer):
+## オンラインデモ
+Ardublockly メイン インターフェイスの最新リリースのデモは、次の 2 つのリンクにあります (コードを Arduino にロードするには、完全な Ardublockly アプリケーションをダウンロードしてコンピュータで実行する必要があります)。
+
+(訳者注: リンク先は本家の英語版)
 
 #### [Ardublockly][10]
 ![WebApp screenshot responsive design][web_screenshot_responsive]
@@ -74,20 +82,20 @@ A demo of the latest release of Ardublockly main interface can be found in the f
 ![WebApp screenshot][web_screenshot_classic]
 
 
-## Documentation
-The documentation, including installation instructions, configuration instructions, and developer information can be found in the [Ardublockly GitHub repository Wiki][7].
+## 資料
+インストール手順、構成手順、開発者情報などのドキュメントは、[Ardublockly GitHub リポジトリ Wiki][7] にあります。
 
-To download the documentation you can git clone the wiki data:
+ドキュメントをダウンロードするには、wikiデータを git clone します。
 
 ```
 git clone https://github.com/carlosperate/ardublockly.wiki.git
 ```
 
 
-## Credit
-This project has been inspired by [BlocklyDuino][16].
+## クレジット
+このプロジェクトは [BlocklyDuino][16] からインスピレーションを受けています。
 
-Blockly original source is Copyright of Google Inc. [https://developers.google.com/blockly/][1]. A list of changes to the Blockly fork can be found in the [Blockly subdirectory README][17] file.
+Blockly のオリジナル ソースは Google Inc. の著作権です [https://developers.google.com/blockly/][1]。 Blockly フォークへの変更のリストは、[Blockly subdirectory README][17] にあります。
 
 
 ## License
