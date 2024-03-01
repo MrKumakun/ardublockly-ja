@@ -527,3 +527,8 @@ Blockly.Msg.INTERRUPTS_TOOLTIP = "Re-enables interrupts (after they've been disa
 Blockly.Msg.ARD_FALLING = "Falling";
 Blockly.Msg.ARD_RISING = "Rising";
 Blockly.Msg.ARD_CHANGE = "Change";
+
+Blockly.Msg.MATH_ANG_DEG = 'degrees';
+Blockly.Msg.MATH_ANG_RAD = 'radian';
+Blockly.Msg.MATH_ANG_TOOLTIP_DEG = 'Converts a radian measurement to its corresponding value in degrees. Radians and degrees are two ways of measuring the same thing.';
+Blockly.Msg.MATH_ANG_TOOLTIP_RAD = 'Converts a degree measurement to its corresponding value in radians. Radians and degrees are two ways of measuring the same thing.';
