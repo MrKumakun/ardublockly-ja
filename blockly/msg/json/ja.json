@@ -53,7 +53,7 @@
 	"COLOUR_BLEND_TOOLTIP": "ブレンド2 つの色を指定された比率に混ぜる」  (0.0 ～ 1.0)。",
 	"CONTROLS_REPEAT_HELPURL": "https://ja.wikipedia.org/wiki/for文",
 	"CONTROLS_REPEAT_TITLE": "%1 回、繰り返します",
-	"CONTROLS_REPEAT_INPUT_DO": "してください",
+	"CONTROLS_REPEAT_INPUT_DO": "実行します",
 	"CONTROLS_REPEAT_TOOLTIP": "いくつかのステートメントを数回行います。",
 	"CONTROLS_WHILEUNTIL_OPERATOR_WHILE": "つつその間、繰り返す4",
 	"CONTROLS_WHILEUNTIL_OPERATOR_UNTIL": "までを繰り返します",

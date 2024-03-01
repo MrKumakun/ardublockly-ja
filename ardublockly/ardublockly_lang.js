@@ -11,20 +11,14 @@ var Ardublockly = Ardublockly || {};
 
 /** Lookup for names of supported languages. Keys in ISO 639 format. */
 Ardublockly.LANGUAGE_NAME = {
-  'fr': 'Français',
-  'en': 'English',
-  'es': 'Español',
-  'nl': 'Nederlands',
-  'pt': 'Português',
-  'it': 'Italiano',
-  'ru': 'Русский'
+  'ja': '日本語',
 };
 
 /**
  * Selected language, default English.
  * @type {string}
  */
-Ardublockly.LANG = 'en';
+Ardublockly.LANG = 'ja';
 
 /**
  * We keep a local copy of the default language in case translations cannot
