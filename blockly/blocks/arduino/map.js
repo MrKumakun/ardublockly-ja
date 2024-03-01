@@ -36,7 +36,7 @@ Blockly.Blocks['base_map'] = {
         .appendField(Blockly.Msg.ARD_MAP_VAL)
         .setCheck(Blockly.Types.NUMBER.checkList);
     this.appendDummyInput()
-        .appendField(']');
+        .appendField(Blockly.Msg.ARD_MAP_VAL_END);
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.Msg.ARD_MAP_TIP);
