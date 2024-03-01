@@ -415,6 +415,7 @@ Blockly.Msg.ARD_LOW = "BAS";
 Blockly.Msg.ARD_MAP = "Converti";
 Blockly.Msg.ARD_MAP_TIP = "Converti un nombre de la plage [0-1024].";
 Blockly.Msg.ARD_MAP_VAL = "valeur de [0-";
+Blockly.Msg.ARD_MAP_VAL_END = "]";  // untranslated
 Blockly.Msg.ARD_NOTONE = "Eteindre la tonalité du signal #";
 Blockly.Msg.ARD_NOTONE_PIN = "PAS de Signal de tonalité #";
 Blockly.Msg.ARD_NOTONE_PIN_TIP = "Arret de la génération de tonalité (son)sur un signal";

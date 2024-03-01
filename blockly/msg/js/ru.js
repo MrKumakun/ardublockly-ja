@@ -415,6 +415,7 @@ Blockly.Msg.ARD_LOW = "LOW";
 Blockly.Msg.ARD_MAP = "Преобразовать значение";
 Blockly.Msg.ARD_MAP_TIP = "Преобразовывает из диапазона [0-1024] в другой диапазон.";
 Blockly.Msg.ARD_MAP_VAL = "в диапазон [0-";
+Blockly.Msg.ARD_MAP_VAL_END = "]";  // untranslated
 Blockly.Msg.ARD_NOTONE = "Отключить частоту на пине №";
 Blockly.Msg.ARD_NOTONE_PIN = "Вход/выход без поддержки генерации сигнала №";
 Blockly.Msg.ARD_NOTONE_PIN_TIP = "Остановит генерацию прямоугольного сигнала на выходе";

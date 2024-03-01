@@ -415,6 +415,7 @@ Blockly.Msg.ARD_LOW = "BASSO";
 Blockly.Msg.ARD_MAP = "Mappa";
 Blockly.Msg.ARD_MAP_TIP = "Mappa un numero nell'intervallo [0-1024] a un'altro numero.";
 Blockly.Msg.ARD_MAP_VAL = "valore a [0-";
+Blockly.Msg.ARD_MAP_VAL_END = "]";  // untranslated
 Blockly.Msg.ARD_NOTONE = "Spegne il tono sul pin #";
 Blockly.Msg.ARD_NOTONE_PIN = "Nessun tono sul PIN#";
 Blockly.Msg.ARD_NOTONE_PIN_TIP = "Ferma la generazione di un tono su un pin.";
