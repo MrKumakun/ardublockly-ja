@@ -510,3 +510,20 @@ Blockly.Msg.NEW_INSTANCE = "New instance...";
 Blockly.Msg.NEW_INSTANCE_TITLE = "New instance name:";
 Blockly.Msg.RENAME_INSTANCE = "Rename instance...";
 Blockly.Msg.RENAME_INSTANCE_TITLE = "Rename all '%1' instances to:";
+
+// Interpput
+Blockly.Msg.INTERRUPTS_ATTACH_HELPURL = "https://www.arduino.cc/en/Reference/AttachInterrupt";
+Blockly.Msg.INTERRUPTS_ATTACH_TITLE = "Attach Interrupt";
+Blockly.Msg.INTERRUPTS_ATTACH_TOOLTIP = "The first parameter to attachInterrupt is an interrupt number.";
+Blockly.Msg.INTERRUPTS_DETACH_HELPURL = "https://www.arduino.cc/en/Reference/DetachInterrupt";
+Blockly.Msg.INTERRUPTS_DETACH_TITLE = "Detach Interrupt";
+Blockly.Msg.INTERRUPTS_DETACH_TOOLTIP = "Turns off the given interrupt.";
+Blockly.Msg.INTERRUPTS_HELPURL = "https://www.arduino.cc/en/Reference/Interrupts";
+Blockly.Msg.INTERRUPTS_NO_HELPURL = "https://www.arduino.cc/en/Reference/NoInterrupts";
+Blockly.Msg.INTERRUPTS_NO_TITLE = "Disable Interrupt";
+Blockly.Msg.INTERRUPTS_NO_TOOLTIP = "Disables interrupts (you can re-enable them with interrupts()).";
+Blockly.Msg.INTERRUPTS_TITLE = "Enable Interrupt";
+Blockly.Msg.INTERRUPTS_TOOLTIP = "Re-enables interrupts (after they've been disabled by noInterrupts()). ";
+Blockly.Msg.ARD_FALLING = "Falling";
+Blockly.Msg.ARD_RISING = "Rising";
+Blockly.Msg.ARD_CHANGE = "Change";

@@ -231,4 +231,10 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="spi_transfer"></block>' +
 '    <block type="spi_transfer_return"></block>' +
 '  </category>' +
+'  <category id="catInts" name="Ints">' +
+'    <block type="interrupts_attach"></block>' +
+'    <block type="interrupts_detach"></block>' +
+'    <block type="interrupts"></block>' +
+'    <block type="interrupts_no"></block>' +
+'  </category>' +
 '</xml>';
