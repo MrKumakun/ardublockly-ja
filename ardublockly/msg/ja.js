@@ -1,7 +1,7 @@
 var Ardublockly = Ardublockly || {};
 Ardublockly.LOCALISED_TEXT = {
   translationLanguage: "日本語",
-  title: "Ardublockly",
+  title: "Ardublockly 日本語",
   blocks: "Blocks",
   /* Menu */
   open: "開く",
@@ -20,71 +20,71 @@ Ardublockly.LOCALISED_TEXT = {
   arduinoBoardDefault: "Arduinoの種類が不明",
   comPort: "COMポート番号",
   comPortDefault: "ポート番号が不明",
-  defaultIdeButton: "[ja]Default IDE Button",
-  defaultIdeButtonDefault: "[ja]IDE options unknown",
+  defaultIdeButton: "Default IDE Button",
+  defaultIdeButtonDefault: "IDE options unknown",
   language: "言語",
   languageDefault: "言語が不明",
   sketchName: "スケッチの名前",
   /* Arduino console output */
-  arduinoOpMainTitle: "[ja]Arduino IDE output",
-  arduinoOpWaiting: "[ja]Waiting for the IDE output...",
-  arduinoOpUploadedTitle: "[ja]Successfully Uploaded Sketch",
-  arduinoOpVerifiedTitle: "[ja]Successfully Verified Sketch",
-  arduinoOpOpenedTitle: "[ja]Sketch opened in IDE",
-  arduinoOpOpenedBody: "[ja]The sketch should be loaded in the Arduino IDE.",
-  arduinoOpErrorUpVerTitle: "[ja]Build or Upload failed",
-  arduinoOpErrorSketchTitle: "[ja]Sketch not found",
-  arduinoOpErrorFlagTitle: "[ja]Invalid command line argument",
-  arduinoOpErrorFlagPrefTitle: "[ja]Preference passed to 'get-pref' flag does not exist",
-  arduinoOpErrorIdeDirTitle: "[ja]Unable to find Arduino IDE",
-  arduinoOpErrorIdeDirBody: "[ja]The compiler directory has not been set.<br>" +
-                            "[ja]Please set it in the Settings.",
-  arduinoOpErrorIdeOptionTitle: "[ja]What should we do with the Sketch?",
-  arduinoOpErrorIdeOptionBody: "[ja]The launch IDE option has not been set.<br>" +
-                               "[ja]Please select an IDE option in the Settings.",
-  arduinoOpErrorIdePortTitle: "[ja]Serial Port unavailable",
-  arduinoOpErrorIdePortBody: "[ja]The Serial Port is not accessible.<br>" +
-                             "[ja]Please check if the Arduino is correctly connected to the PC and select the Serial Port in the Settings.",
-  arduinoOpErrorIdeBoardTitle: "[ja]Unknown Arduino Board",
-  arduinoOpErrorIdeBoardBody: "[ja]The Arduino Board has not been set.<br>" +
-                              "[ja]Please select the appropriate Arduino Board from the settings.",
+  arduinoOpMainTitle: "Arduino IDE 出力",
+  arduinoOpWaiting: "IDEからの出力を待っています....",
+  arduinoOpUploadedTitle: "スケッチが正常にアップロードされました",
+  arduinoOpVerifiedTitle: "スケッチの検証が正常に完了しました",
+  arduinoOpOpenedTitle: "スケッチをIDEで開く",
+  arduinoOpOpenedBody: "スケッチはArduino IDEにロードする必要があります",
+  arduinoOpErrorUpVerTitle: "ビルドもしくはアップロードに失敗しました",
+  arduinoOpErrorSketchTitle: "スケッチが見つかりません",
+  arduinoOpErrorFlagTitle: "無効なコマンドライン引数です",
+  arduinoOpErrorFlagPrefTitle: "プリファレンス'--get-pref'フラグの設定が見つかりません",
+  arduinoOpErrorIdeDirTitle: "Arduino IDEが見つかりません",
+  arduinoOpErrorIdeDirBody: "コンパイラのディレクトリが設定されていません<br>" +
+                            "設定を確認してください",
+  arduinoOpErrorIdeOptionTitle: "スケッチをどうしますか?",
+  arduinoOpErrorIdeOptionBody: "IDEの起動オプションが設定されていません<br>" +
+                               "IDEの設定を確認してください",
+  arduinoOpErrorIdePortTitle: "シリアルポートが利用できません",
+  arduinoOpErrorIdePortBody: "シリアルポートにはアクセスできません<br>" +
+                             "PCが正しくArduinoを認識しているか確認し、接続されているシリアルポート番号を指定してください",
+  arduinoOpErrorIdeBoardTitle: "Arduinoの種類が不明です",
+  arduinoOpErrorIdeBoardBody: "使用するArduinoボードは設定されていません<br>" +
+                              "設定から適切なArduinoボードを選択してください",
   /* Modals */
-  noServerTitle: "[ja]Ardublockly app not running",
-  noServerTitleBody: "<p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally on your computer.</p>" +
-                     "<p>If you are using an online version you will not be able to configure the settings nor load the blocks code into an Arduino.</p>" +
-                     "<p>Installation instruction can be found in the <a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository</a>.</p>" +
-                     "<p>If you have Ardublockly already installed, make sure the application is running correctly.</p>",
-  noServerNoLangBody: "[ja]If the Ardublockly application is not running the language cannot be fully changed.",
-  addBlocksTitle: "[ja]Additional Blocks",
+  noServerTitle: "Ardublocklyが実行されていません",
+  noServerTitleBody: "<p>すべてのArdublockly機能を有効にするためには、ローカルのコンピューターで実行されている必要があります。</p>" +
+                     "<p>インターネット経由のオンラインバージョンを使用している場合、設定を構成したり、コードをArduinoにロードしたりすることはできません。</p>" +
+                     "<p>インストール方法については、<a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository (英語)</a>を参照してください。</a>.</p>" +
+                     "<p>もし、既にインストールされている場合は、アプリケーションが正しく実行されていることを確認してください。</p>",
+  noServerNoLangBody: "Ardublocklyアプリケーションが実行されていない場合、言語の変更ができません",
+  addBlocksTitle: "Additional Blocks 日本語",
   /* Alerts */
-  loadNewBlocksTitle: "[ja]Load new blocks?",
-  loadNewBlocksBody: "[ja]Loading a new XML file will replace the current blocks from the workspace.<br>" +
-                     "[ja]Are you sure you want to proceed?",
-  discardBlocksTitle: "[ja]Delete blocks?",
-  discardBlocksBody: "[ja]There are %1 blocks on the workspace.<br>" +
-                     "[ja]Are you sure you want to delete them?",
-  invalidXmlTitle: "[ja]Invalid XML",
-  invalidXmlBody: "[ja]The XML file was not successfully parsed into blocks. Please review the XML code and try again.",
+  loadNewBlocksTitle: "新しいブロックをロードしますか?",
+  loadNewBlocksBody: "新しいXMLファイルをロードすると、ワークスペースから現在のブロックが削除され、置き換えられます。<br>" +
+                     "ロードして大丈夫ですか？",
+  discardBlocksTitle: "ブロックを削除しますか？",
+  discardBlocksBody: "ワークスペースには %1 ブロックがあります。<br>" +
+                     "削除しても問題ないですか？",
+  invalidXmlTitle: "無効なXMLです",
+  invalidXmlBody: "XMLファイルは正常に解析されませんでした。XMLコードを確認して、再試行してください。",
   /* Tooltips */
-  uploadingSketch: "[ja]Uploading Sketch into Arduino...",
-  uploadSketch: "[ja]Upload Sketch to the Arduino",
-  verifyingSketch: "[ja]Verifying Sketch...",
-  verifySketch: "[ja]Verify the Sketch",
-  openingSketch: "[ja]Opening Sketch in the Arduino IDE...",
-  openSketch: "[ja]Open Sketch in IDE",
-  notImplemented: "[ja]Function not yet implemented",
+  uploadingSketch: "スケッチをArduinoにアップロード中...",
+  uploadSketch: "Arduinoにアップロードが完了",
+  verifyingSketch: "スケッチの検証中...",
+  verifySketch: "スケッチの確認完了",
+  openingSketch: "Arduino IDEでスケッチを開いています...",
+  openSketch: "IDEでスケッチを開きました",
+  notImplemented: "未実装項目です",
   /* Prompts */
   ok: "OK",
-  okay: "Okay",
+  okay: "はい",
   cancel: "キャンセル",
   return: "戻る",
   /* Cards */
   arduinoSourceCode: "Arduino Source Code",
   blocksXml: "Blocks XML",
   /* Toolbox Categories*/
-  catLogic: "論理",
+  catLogic: "演算",
   catLoops: "繰返し",
-  catMath: "数字",
+  catMath: "数式",
   catText: "文字",
   catVariables: "変数",
   catFunctions: "関数",
