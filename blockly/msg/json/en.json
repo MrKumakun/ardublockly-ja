@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2016-10-09 00:55:05.070000",
+		"lastupdated": "2024-03-01 17:29:33.909000",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -122,6 +122,8 @@
 	"MATH_TRIG_ASIN": "asin",
 	"MATH_TRIG_ACOS": "acos",
 	"MATH_TRIG_ATAN": "atan",
+	"MATH_ANG_DEG": "degrees",
+	"MATH_ANG_RAD": "radian",
 	"MATH_ARITHMETIC_HELPURL": "https://en.wikipedia.org/wiki/Arithmetic",
 	"MATH_ARITHMETIC_TOOLTIP_ADD": "Return the sum of the two numbers.",
 	"MATH_ARITHMETIC_TOOLTIP_MINUS": "Return the difference of the two numbers.",
@@ -192,6 +194,8 @@
 	"MATH_RANDOM_FLOAT_HELPURL": "https://en.wikipedia.org/wiki/Random_number_generation",
 	"MATH_RANDOM_FLOAT_TITLE_RANDOM": "random fraction",
 	"MATH_RANDOM_FLOAT_TOOLTIP": "Return a random fraction between 0.0 (inclusive) and 1.0 (exclusive).",
+	"MATH_ANG_TOOLTIP_DEG": "Converts a radian measurement to its corresponding value in degrees. Radians and degrees are two ways of measuring the same thing.",
+	"MATH_ANG_TOOLTIP_RAD": "Converts a degree measurement to its corresponding value in radians. Radians and degrees are two ways of measuring the same thing.",
 	"TEXT_TEXT_HELPURL": "https://en.wikipedia.org/wiki/String_(computer_science)",
 	"TEXT_TEXT_TOOLTIP": "A letter, word, or line of text.",
 	"TEXT_JOIN_HELPURL": "https://github.com/google/blockly/wiki/Text#text-creation",
@@ -370,5 +374,17 @@
 	"PROCEDURES_CREATE_DO": "Create '%1'",
 	"PROCEDURES_IFRETURN_TOOLTIP": "If a value is true, then return a second value.",
 	"PROCEDURES_IFRETURN_HELPURL": "http://c2.com/cgi/wiki?GuardClause",
-	"PROCEDURES_IFRETURN_WARNING": "Warning: This block may be used only within a function definition."
+	"PROCEDURES_IFRETURN_WARNING": "Warning: This block may be used only within a function definition.",
+	"INTERRUPTS_ATTACH_TITLE": "Attach Interrupt",
+	"INTERRUPTS_DETACH_TITLE": "Detach Interrupt",
+	"INTERRUPTS_TITLE": "Enable Interrupt",
+	"INTERRUPTS_NO_TITLE": "Disable Interrupt",
+	"INTERRUPTS_ATTACH_HELPURL": "https://www.arduino.cc/en/Reference/AttachInterrupt",
+	"INTERRUPTS_ATTACH_TOOLTIP": "The first parameter to attachInterrupt is an interrupt number.",
+	"INTERRUPTS_DETACH_HELPURL": "https://www.arduino.cc/en/Reference/DetachInterrupt",
+	"INTERRUPTS_DETACH_TOOLTIP": "Turns off the given interrupt.",
+	"INTERRUPTS_NO_HELPURL": "https://www.arduino.cc/en/Reference/NoInterrupts",
+	"INTERRUPTS_NO_TOOLTIP": "Disables interrupts (you can re-enable them with interrupts()).",
+	"INTERRUPTS_HELPURL": "https://www.arduino.cc/en/Reference/Interrupts",
+	"INTERRUPTS_TOOLTIP": "Re-enables interrupts (after they've been disabled by noInterrupts())."
 }
