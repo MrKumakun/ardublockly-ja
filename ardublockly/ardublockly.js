@@ -29,7 +29,7 @@ Ardublockly.init = function() {
   // Hackish way to check if not running locally
   if (document.location.hostname != 'localhost') {
     Ardublockly.openNotConnectedModal();
-    console.log('Offline app modal opened as non localhost host name found: ' +
+    console.log('オフラインアプリモードで開かれた localhost 以外のホストが見つかりました: ' +
                 document.location.hostname)
   }
 };
@@ -376,7 +376,7 @@ Ardublockly.setCompilerLocationHtml = function(newEl) {
   var compLocIp = document.getElementById('settings_compiler_location');
   if (compLocIp != null) {
     compLocIp.value = newEl.value || compLocIp.value ||
-        'Please enter the location of the Arduino IDE executable';
+        'Arduino IDE (Arduino.exe)の場所を入力してください';
     compLocIp.style.cssText = newEl.style.cssText;
   }
 };
@@ -392,7 +392,7 @@ Ardublockly.setSketchLocationHtml = function(newEl) {
   var sketchLocIp = document.getElementById('settings_sketch_location');
   if (sketchLocIp != null) {
     sketchLocIp.value = newEl.value || sketchLocIp.value ||
-        'Please enter a folder to store the Arduino Sketch';
+        'スケッチを保存するフォルダーを入力してください';
     sketchLocIp.style.cssText = newEl.style.cssText;
   }
 };
@@ -664,7 +664,7 @@ Ardublockly.importExtraBlocks = function() {
               }
               if (invalidFunc) {
                 throw 'Blocks ' + category.categoryName + ' extension "' +
-                      extension + '" is not a valid function.';
+                      extension + '" は、有効な関数ではありません';
               } else {
                 extensionCall();
               }
@@ -717,7 +717,7 @@ Ardublockly.openExtraCategoriesSelect = function() {
 
 /** Informs the user that the selected function is not yet implemented. */
 Ardublockly.functionNotImplemented = function() {
-  Ardublockly.shortMessage('Function not yet implemented');
+  Ardublockly.shortMessage('この機能はまだ実装されていません');
 };
 
 /**
