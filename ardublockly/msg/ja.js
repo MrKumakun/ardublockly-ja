@@ -71,7 +71,7 @@ Ardublockly.LOCALISED_TEXT = {
   verifyingSketch: "スケッチの検証中...",
   verifySketch: "スケッチの確認完了",
   openingSketch: "Arduino IDEでスケッチを開いています...",
-  openSketch: "IDEでスケッチを開きました",
+  openSketch: "IDEでスケッチを開く",
   notImplemented: "未実装項目です",
   /* Prompts */
   ok: "OK",
