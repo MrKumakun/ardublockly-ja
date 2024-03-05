@@ -22,11 +22,11 @@ var ardublocklyRootDir = null;
 function ardublocklyNotFound(working_dir) {
     require('dialog').showMessageBox({
         type: 'warning',
-        title: 'Unable to locate Ardublockly folder',
+        title: 'Ardublocklyフォルダーを見つけることができません',
         buttons: ['ok'],
-        message: 'The Ardublockly folder could not be found within the ' +
-                 'execution directory:\n\t' + working_dir + '\nThe ' +
-                 'application will not be able to function properly.'
+        message: 'Ardublocklyフォルダーが、見つかりませんでした。\n' +
+                 '実行ディレクトリ:\n\t' + working_dir + '\n' +
+                 'アプリケーションは正しく動作しません。'
     });
 }
 

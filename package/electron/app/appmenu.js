@@ -49,7 +49,7 @@ var getMacMenuData = function() {
             }, {
                 type: 'separator'
             }, {
-                label: 'Preferences',
+                label: '環境設定',
                 accelerator: 'CmdOrCtrl+,',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -58,25 +58,25 @@ var getMacMenuData = function() {
             }, {
                 type: 'separator'
             }, {
-                label: 'Services',
+                label: 'サービス',
                 submenu: []
             }, {
                 type: 'separator'
             }, {
-                label: 'Hide Ardublockly',
+                label: 'Ardublocklyを非表示',
                 accelerator: 'Command+H',
                 selector: 'hide:'
             }, {
-                label: 'Hide Others',
+                label: '他のアプリを非表示',
                 accelerator: 'Command+Shift+H',
                 selector: 'hideOtherApplications:'
             }, {
-                label: 'Show All',
+                label: 'すべて表示',
                 selector: 'unhideAllApplications:'
             }, {
                 type: 'separator'
             }, {
-                label: 'Quit',
+                label: '終了',
                 accelerator: 'CmdOrCtrl+Q',
                 click: function() {
                     app.quit();
@@ -88,14 +88,14 @@ var getMacMenuData = function() {
 
 var getFileMenuData = function() {
     var fileMenu = {
-        label: 'File',
+        label: 'ファイル',
         submenu: [
             {
-                label: 'New',
+                label: '新規作成',
                 accelerator: 'CmdOrCtrl+N',
                 click: functionNotImplemented
             }, {
-                label: 'Open',
+                label: '開く',
                 accelerator: 'CmdOrCtrl+O',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -103,14 +103,14 @@ var getFileMenuData = function() {
                             'Ardublockly.loadUserXmlFile()', true);
                 }
             }, {
-                label: 'Save Blocks as',
+                label: 'ブロックを保存',
                 accelerator: 'CmdOrCtrl+S',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.saveXmlFile()');
                 }
             }, {
-                label: 'Save Arduino Sketch as',
+                label: 'スケッチを保存',
                 accelerator: 'Shift+CmdOrCtrl+S',
                 click:  function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -126,7 +126,7 @@ var getFileMenuData = function() {
             {
                 type: 'separator'
             }, {
-                label: 'Quit',
+                label: '終了',
                 accelerator: 'CmdOrCtrl+Q',
                 click: function() {
                     app.quit();
@@ -140,17 +140,17 @@ var getFileMenuData = function() {
 
 var getEditMenuData = function() {
     var editMenud = {
-        label: 'Edit',
+        label: '編集',
         submenu: [
             {
-                label: 'Undo',
+                label: '元に戻す',
                 accelerator: 'CmdOrCtrl+Z',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.workspace.undo(false)');
                 }
             }, {
-                label: 'Redo',
+                label: 'やり直し',
                 accelerator: 'CmdOrCtrl+Y',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -159,35 +159,35 @@ var getEditMenuData = function() {
             }, {
                 type: 'separator'
             }, {
-                label: 'Cut',
+                label: '切り取り',
                 accelerator: 'CmdOrCtrl+X',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.blocklyCut()');
                 }
             }, {
-                label: 'Copy',
+                label: 'コピー',
                 accelerator: 'CmdOrCtrl+C',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.blocklyCopy()');
                 }
             }, {
-                label: 'Paste',
+                label: '貼り付け',
                 accelerator: 'CmdOrCtrl+V',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.blocklyPaste()');
                 }
             }, {
-                label: 'Delete',
+                label: '削除',
                 accelerator: 'Delete',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.blocklyDelete()');
                 }
             }, {
-                label: 'Delete All',
+                label: 'すべて削除',
                 accelerator: 'Delete',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -203,7 +203,7 @@ var getEditMenuData = function() {
             {
                 type: 'separator'
             }, {
-                label: 'Preferences',
+                label: '環境設定',
                 accelerator: 'CmdOrCtrl+,',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -218,7 +218,7 @@ var getEditMenuData = function() {
 
 var getExamplesMenuData = function() {
     return {
-        label: 'Examples',
+        label: 'サンプル',
         submenu: [
             {
                 label: 'Blinky',
@@ -267,24 +267,24 @@ var getExamplesMenuData = function() {
 
 var getProgramMenuData = function() {
     return {
-        label: 'Program',
+        label: 'プログラム',
         submenu: [
             {
-                label: 'Open sketch in IDE',
+                label: 'IDEでスケッチを開く',
                 //accelerator: 'CmdOrCtrl+O',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.ideSendOpen()');
                 }
             }, {
-                label: 'Verify',
+                label: '検証',
                 accelerator: 'CmdOrCtrl+R',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript('Ardublockly.ideSendVerify()');
                 }
             }, {
-                label: 'Upload program',
+                label: 'プログラムの書き込み',
                 accelerator: 'CmdOrCtrl+U',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
@@ -297,20 +297,20 @@ var getProgramMenuData = function() {
 
 var getWindowMenuData = function() {
     return {
-        label: 'Window',
+        label: 'ウィンドウ',
         submenu: [
             {
-                label: 'Minimize',
+                label: '最小化',
                 accelerator: 'Command+M',
                 selector: 'performMiniaturize:'
             }, {
-                label: 'Close',
+                label: '閉じる',
                 accelerator: 'Command+W',
                 selector: 'performClose:'
            }, {
                 type: 'separator'
             }, {
-                label: 'Bring All to Front',
+                label: '最前面に表示',
                 selector: 'arrangeInFront:'
             }
         ]
@@ -319,34 +319,34 @@ var getWindowMenuData = function() {
 
 var getHelpMenuData = function() {
     return {
-        label: 'Help',
+        label: 'へルプ',
         submenu: [
             {
-                label: 'Quick Start',
+                label: 'クイックスタート',
                 click: function() {
                     shell.openExternal(
                         'http://localhost:8000/docs/Quick-Start');
                 }
             }, {
-                label: 'Manual',
+                label: 'マニュアル',
                 click: function() {
                     shell.openExternal('http://localhost:8000/docs/');
                 }
             }, {
                 type: 'separator'
             }, {
-                label: 'Website',
+                label: 'ウェブサイト',
                 click: function() {
                     shell.openExternal('http://ardublockly.embeddedlog.com');
                 }
             }, {
-                label: 'Source code',
+                label: 'ソースコード',
                 click: function() {
                     shell.openExternal(
                         'https://github.com/carlosperate/ardublockly');
                 }
             }, {
-                label: 'Report a bug',
+                label: '不具合報告',
                 click: function() {
                     shell.openExternal(
                         'https://github.com/carlosperate/ardublockly/issues');
@@ -354,7 +354,7 @@ var getHelpMenuData = function() {
             }, {
                 type: 'separator'
             },  {
-                label: 'About',
+                label: 'Ardublockly について',
                 click: function() {
                     shell.openExternal('http://localhost:8000/docs/About');
                 }
@@ -365,17 +365,17 @@ var getHelpMenuData = function() {
 
 var getDevMenuData = function() {
     return {
-        label: 'Development',
+        label: '開発',
         submenu: [
             {
-                label: 'Reload',
+                label: 'リロード',
                 accelerator: 'CmdOrCtrl+F5',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .reloadIgnoringCache();
                 }
             }, {
-                label: 'Toggle DevTools',
+                label: 'DevToolsの切り替え',
                 accelerator: 'F12',
                 click: function() {
                     BrowserWindow.getFocusedWindow().toggleDevTools();
@@ -383,24 +383,24 @@ var getDevMenuData = function() {
             }, {
                 type: 'separator'
             }, {
-                label: 'Stop server',
+                label: 'サーバーの停止',
                 accelerator: 'Shift+CmdOrCtrl+S',
                 click: server.stopServer
             }, {
-                label: 'Restart server',
+                label: 'サーバーの再起動',
                 accelerator: 'Shift+CmdOrCtrl+R',
                 click: server.restartServer
             }, {
                 type: 'separator'
             }, {
-                label: 'Open side menu',
+                label: 'サイドメニューを開く',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript(
                             '$(".button-collapse").sideNav("show")');
                 }
             }, {
-                label: 'Open extra blocks menu',
+                label: 'ブロックメニューを開く',
                 click: function() {
                     BrowserWindow.getFocusedWindow().webContents
                         .executeJavaScript(
@@ -409,7 +409,7 @@ var getDevMenuData = function() {
             }, {
                 type: 'separator'
             },  {
-                label: 'Test menu item',
+                label: 'テストメニュー',
                 click: testFunction
             }
         ]
@@ -421,7 +421,7 @@ var functionNotImplemented = function() {
         type: 'info',
         title: 'Dialog',
         buttons: ['ok',],
-        message: 'This functionality has not yet been implemented.'
+        message: 'この機能はまだ実装されていません。'
     });
 };
 
