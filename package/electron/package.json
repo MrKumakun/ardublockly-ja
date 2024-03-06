@@ -19,6 +19,7 @@
     "postinstall": "cd app && npm install",
     "build": "gulp build",
     "release": "gulp release --env=production",
+    "develop": "gulp release --env=development",
     "start": "gulp start"
   },
   "repository" : {

@@ -167,6 +167,16 @@ Blockly.Msg.ARD_NOTONE = 'Turn off tone on pin #';
 Blockly.Msg.ARD_NOTONE_TIP = 'Turns the tone off on the selected pin';
 
 /**
+ * Interpput  
+ */
+/// falling edge of this signal.
+Blockly.Msg.ARD_FALLING = 'Falling';
+/// rising edge of this signal.
+Blockly.Msg.ARD_RISING = 'Rising';
+/// change in signal (rising or falling).
+Blockly.Msg.ARD_CHANGE = 'Change';
+
+/**
  * Ardublockly instances
  */
 /// Instances - Menu item to indicate that it will create a new instance
@@ -177,3 +187,4 @@ Blockly.Msg.RENAME_INSTANCE = 'Rename instance...';
 Blockly.Msg.NEW_INSTANCE_TITLE = 'New instance name:';
 /// Instances - Confirmation message that a number of instances will be renamed to a new name
 Blockly.Msg.RENAME_INSTANCE_TITLE = 'Rename all "%1" instances to:';
+

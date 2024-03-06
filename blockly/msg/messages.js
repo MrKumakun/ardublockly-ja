@@ -336,6 +336,10 @@ Blockly.Msg.MATH_TRIG_ACOS = 'acos';
 /// [https://en.wikipedia.org/wiki/Trigonometric_functions#Sine.2C_cosine_and_tangent tangent].
 Blockly.Msg.MATH_TRIG_ATAN = 'atan';
 
+/// math - Radians and Degrees are two ways of measuring the same thing
+Blockly.Msg.MATH_ANG_DEG = 'degrees';
+Blockly.Msg.MATH_ANG_RAD = 'radian';
+
 /// url - Information about addition, subtraction, multiplication, division, and exponentiation.
 Blockly.Msg.MATH_ARITHMETIC_HELPURL = 'https://en.wikipedia.org/wiki/Arithmetic';
 /// tooltip - See [https://en.wikipedia.org/wiki/Addition https://en.wikipedia.org/wiki/Addition].
@@ -494,6 +498,13 @@ Blockly.Msg.MATH_RANDOM_FLOAT_HELPURL = 'https://en.wikipedia.org/wiki/Random_nu
 Blockly.Msg.MATH_RANDOM_FLOAT_TITLE_RANDOM = 'random fraction';
 /// tooltip - Return a random fraction between 0 and 1.  The value may be equal to 0 but must be less than 1.
 Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP = 'Return a random fraction between 0.0 (inclusive) and 1.0 (exclusive).';
+
+/// url - Information about 
+//Blockly.Msg.MATH_ANG_HELPURL = '';
+/// tooltip - 
+Blockly.Msg.MATH_ANG_TOOLTIP_DEG = 'Converts a radian measurement to its corresponding value in degrees. Radians and degrees are two ways of measuring the same thing.';
+/// tooltip - 
+Blockly.Msg.MATH_ANG_TOOLTIP_RAD = 'Converts a degree measurement to its corresponding value in radians. Radians and degrees are two ways of measuring the same thing.';
 
 // Text Blocks.
 /// url - Information about how computers represent text (sometimes referred to as ''string''s).
@@ -1120,3 +1131,29 @@ Blockly.Msg.PROCEDURES_IFRETURN_TOOLTIP = 'If a value is true, then return a sec
 Blockly.Msg.PROCEDURES_IFRETURN_HELPURL = 'http://c2.com/cgi/wiki?GuardClause';
 /// warning - This appears if the user tries to use this block outside of a function definition.
 Blockly.Msg.PROCEDURES_IFRETURN_WARNING = 'Warning: This block may be used only within a function definition.';
+
+// Interpput Blocks.
+///
+Blockly.Msg.INTERRUPTS_ATTACH_TITLE = 'Attach Interrupt';
+///
+Blockly.Msg.INTERRUPTS_DETACH_TITLE = 'Detach Interrupt';
+///
+Blockly.Msg.INTERRUPTS_TITLE = 'Enable Interrupt';
+///
+Blockly.Msg.INTERRUPTS_NO_TITLE = 'Disable Interrupt';
+/// url - Information about 
+Blockly.Msg.INTERRUPTS_ATTACH_HELPURL = 'https://www.arduino.cc/en/Reference/AttachInterrupt';
+/// tooltip - 
+Blockly.Msg.INTERRUPTS_ATTACH_TOOLTIP = 'The first parameter to attachInterrupt is an interrupt number.';
+/// url - Information about 
+Blockly.Msg.INTERRUPTS_DETACH_HELPURL = 'https://www.arduino.cc/en/Reference/DetachInterrupt';
+/// tooltip - 
+Blockly.Msg.INTERRUPTS_DETACH_TOOLTIP = 'Turns off the given interrupt.';
+/// url - Information about 
+Blockly.Msg.INTERRUPTS_NO_HELPURL = 'https://www.arduino.cc/en/Reference/NoInterrupts';
+/// tooltip - 
+Blockly.Msg.INTERRUPTS_NO_TOOLTIP = 'Disables interrupts (you can re-enable them with interrupts()).';
+/// url - Information about 
+Blockly.Msg.INTERRUPTS_HELPURL = 'https://www.arduino.cc/en/Reference/Interrupts';
+/// tooltip - 
+Blockly.Msg.INTERRUPTS_TOOLTIP = 'Re-enables interrupts (after they've been disabled by noInterrupts()).';

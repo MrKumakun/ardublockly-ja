@@ -129,6 +129,12 @@ Blockly.Arduino['math_single'] = function(block) {
     case 'TAN':
       code = 'tan(' + arg + ' / 180 * Math.PI)';
       break;
+    case 'RAD':
+      code = '((M_PI / 180) * ' + arg + ')';
+      break;
+    case 'DEG':
+      code = '((180 / Math.PI) * ' + arg + ')';
+      break;
   }
   if (code) {
     return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
@@ -259,6 +265,9 @@ Blockly.Arduino['math_round'] = Blockly.Arduino['math_single'];
 
 /** Trigonometry functions have a single operand. */
 Blockly.Arduino['math_trig'] = Blockly.Arduino['math_single'];
+
+/** Trigonometry functions have a single operand. */
+Blockly.Arduino['math_ang'] = Blockly.Arduino['math_single'];
 
 /**
  * Generator for the math function to a list.

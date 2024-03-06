@@ -27,6 +27,7 @@
 // Top level object for Blockly.
 goog.provide('Blockly');
 
+goog.require('Blockly.Base');
 goog.require('Blockly.BlockSvg.render');
 goog.require('Blockly.Events');
 goog.require('Blockly.FieldAngle');
@@ -53,6 +54,11 @@ goog.require('Blockly.inject');
 goog.require('Blockly.utils');
 goog.require('goog.color');
 goog.require('goog.userAgent');
+goog.require('goog.debug.ErrorHandler');
+goog.require('goog.events.EventWrapper');
+goog.require('goog.events.EventId');
+goog.require('goog.events.EventLike');
+goog.require('goog.events.EventWrapper');
 
 
 // Turn off debugging when compiled.
@@ -576,3 +582,5 @@ if (!goog.global['Blockly']) {
 }
 goog.global['Blockly']['getMainWorkspace'] = Blockly.getMainWorkspace;
 goog.global['Blockly']['addChangeListener'] = Blockly.addChangeListener;
+
+

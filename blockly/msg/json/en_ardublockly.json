@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "carlosperate",
-		"lastupdated": "2024-03-01 18:52:25.746000",
+		"lastupdated": "2024-03-06 17:12:11.618000",
 		"locale": "en",
 		"messagedocumentation" : "qqq_ardublockly"
 	},
@@ -118,6 +118,9 @@
 	"ARD_TONE_WARNING": "Frequency must be in range 31 - 65535",
 	"ARD_NOTONE": "Turn off tone on pin #",
 	"ARD_NOTONE_TIP": "Turns the tone off on the selected pin",
+	"ARD_FALLING": "Falling",
+	"ARD_RISING": "Rising",
+	"ARD_CHANGE": "Change",
 	"NEW_INSTANCE": "New instance...",
 	"RENAME_INSTANCE": "Rename instance...",
 	"NEW_INSTANCE_TITLE": "New instance name:",
