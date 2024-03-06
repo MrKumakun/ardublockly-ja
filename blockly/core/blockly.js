@@ -27,6 +27,7 @@
 // Top level object for Blockly.
 goog.provide('Blockly');
 
+goog.require('Blockly.Base');
 goog.require('Blockly.BlockSvg.render');
 goog.require('Blockly.Events');
 goog.require('Blockly.FieldAngle');
@@ -581,3 +582,5 @@ if (!goog.global['Blockly']) {
 }
 goog.global['Blockly']['getMainWorkspace'] = Blockly.getMainWorkspace;
 goog.global['Blockly']['addChangeListener'] = Blockly.addChangeListener;
+
+
