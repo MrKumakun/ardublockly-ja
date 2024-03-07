@@ -349,7 +349,7 @@ var getHelpMenuData = function() {
                 label: '不具合報告',
                 click: function() {
                     shell.openExternal(
-                        'https://github.com/carlosperate/ardublockly/issues');
+                        'https://github.com/MrKumakun/ardublockly-ja/issues');
                 }
             }, {
                 type: 'separator'
