@@ -25,6 +25,10 @@ All other changes and fixes have been submitted to the original Blockly reposito
 
 This fork gets frequent upstream pulls to maintain it up to date.
 
+MEMO: The final merge is 421fdf8fea2938d562107373da68623f8e1cba6b (2016/5/23)  
+> blockly upstream up to commit 493fa91bdc7389e5cf173b74f59c297125718b53  
+> 21st May 2016 "Merge pull request #376 from google/revert-371-proxy"  
+> https://github.com/google/blockly/commit/493fa91bdc7389e5cf173b74f59c297125718b53
 
 ## Git configuration
 
