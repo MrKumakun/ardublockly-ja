@@ -62,7 +62,7 @@ def load_arduino_cli(sketch_path):
 
     # Input sanitation and output defaults
     if not os.path.isfile(sketch_path):
-        err_out = 'Provided sketch path is not a valid file: %s' % sketch_path
+        err_out = 'スケッチのパスが有効ではありません: %s' % sketch_path
         success = False
         exit_code = 52
         return success, ide_mode, std_out, err_out, exit_code
@@ -73,41 +73,41 @@ def load_arduino_cli(sketch_path):
     if not settings.compiler_dir:
         success = False
         exit_code = 53
-        err_out = 'Compiler directory not configured in the Settings.'
+        err_out = 'コンパイラのパスが設定されていません。'
     elif not settings.load_ide_option:
         success = False
         exit_code = 54
-        err_out = 'Launch IDE option not configured in the Settings.'
+        err_out = 'IDEの起動オプションが設定されていません。'
     elif not settings.get_arduino_board_flag() and (
             settings.load_ide_option == 'upload' or
             settings.load_ide_option == 'verify'):
         success = False
         exit_code = 56
-        err_out = 'Arduino Board not configured in the Settings.'
+        err_out = 'Arduinoボードの種類が設定されていません。'
     elif not settings.get_serial_port_flag() and \
             settings.load_ide_option == 'upload':
         success = False
         exit_code = 55
-        err_out = 'Serial Port configured in Settings not accessible.'
+        err_out = 'シリアル ポートにアクセスできません。\n設定が間違っているか、他のアプリが使用中の可能性があります。'
 
     if success:
         ide_mode = settings.load_ide_option
         # Concatenates the CLI command and execute if the flags are valid
         cli_command = [settings.compiler_dir, "%s" % sketch_path]
         if settings.load_ide_option == 'upload':
-            print('\nUploading sketch to Arduino...')
+            print('\nスケッチを Arduino にアップロードしています...')
             cli_command.append('--upload')
             cli_command.append('--port')
             cli_command.append(settings.get_serial_port_flag())
             cli_command.append('--board')
             cli_command.append(settings.get_arduino_board_flag())
         elif settings.load_ide_option == 'verify':
-            print('\nVerifying the sketch...')
+            print('\nスケッチを検証中...')
             cli_command.append('--board')
             cli_command.append(settings.get_arduino_board_flag())
             cli_command.append('--verify')
         elif settings.load_ide_option == 'open':
-            print('\nOpening the sketch in the Arduino IDE...')
+            print('\nスケッチを Arduino IDE で開いています...')
         print('CLI command: %s' % ' '.join(cli_command))
         # Python 2 needs the input to subprocess.Popen to be in system encoding
         if sys.version_info[0] < 3:
@@ -127,15 +127,15 @@ def load_arduino_cli(sketch_path):
             std_out = six.u(std_out)
             err_out = six.u(err_out)
             exit_code = process.returncode
-            print('Arduino output:\n%s' % std_out)
-            print('Arduino Error output:\n%s' % err_out)
-            print('Arduino Exit code: %s' % exit_code)
+            print('Arduino 出力:\n%s' % std_out)
+            print('Arduino エラー出力:\n%s' % err_out)
+            print('Arduino 終了コード: %s' % exit_code)
             # For some reason Arduino CLI can return 256 on success
             if (process.returncode != 0) and (process.returncode != 256):
                 success = False
                 if exit_code >= 50:
                     # Custom exit codes from server start at 50
-                    err_out = '%s\nUnexpected Arduino exit error code: %s' % \
+                    err_out = '%s\n予期しない終了コードです。 エラーコード: %s' % \
                               (err_out, exit_code)
                     exit_code = 50
 

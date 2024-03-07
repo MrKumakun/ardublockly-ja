@@ -45,7 +45,7 @@ def create_sketch(sketch_dir, sketch_name=default_sketch_name,
     # Check the code first, to not create sketch file if invalid
     if not isinstance(sketch_code, six.string_types) or \
             not isinstance(sketch_name, six.string_types):
-        print('The sketch name or code given is not a valid string !!!')
+        print('指定されたスケッチ名またはコードは有効な文字列ではありません!!!')
         return None
     # Create the sketch path
     sketch_path = build_sketch_path(sketch_dir, sketch_name)
@@ -53,7 +53,7 @@ def create_sketch(sketch_dir, sketch_name=default_sketch_name,
         with codecs.open(sketch_path, 'wb+', encoding='utf-8') as sketch_f:
             sketch_f.write(sketch_code)
     except Exception as e:
-        print('Error: %s\nArduino sketch could not be created !!!' % e)
+        print('Error: %s\nArduinoスケッチは作成できませんでした!!!' % e)
         return None
     return sketch_path
 
@@ -72,11 +72,11 @@ def build_sketch_path(sketch_dir, sketch_name):
         try:
             sketch_path = os.path.join(sketch_dir, sketch_name)
         except (TypeError, AttributeError) as e:
-            print('Error: %s\nSketch Name could not be processed.' % e)
+            print('Error: %s\nスケッチ名を処理できませんでした' % e)
         else:
             if not os.path.exists(sketch_path):
                 os.makedirs(sketch_path)
             sketch_path = os.path.join(sketch_path, sketch_name + '.ino')
     else:
-        print('The sketch directory "%s" does not exists !!!' % sketch_dir)
+        print('スケッチパス "%s" が存在しません!!!' % sketch_dir)
     return sketch_path

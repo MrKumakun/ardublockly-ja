@@ -134,27 +134,27 @@ class ServerCompilerSettings(object):
             bundle = os.path.join(new_compiler_dir, 'Contents', 'MacOS')
             if os.path.isfile(os.path.join(bundle, 'JavaApplicationStub')):
                 new_compiler_dir = os.path.join(bundle, 'JavaApplicationStub')
-                print('Compiler file in OS X located within the app bundle.')
+                print('アプリバンドル内にあるOS Xのコンパイラファイル')
             elif os.path.isfile(os.path.join(bundle, 'Arduino')):
                 new_compiler_dir = os.path.join(bundle, 'Arduino')
-                print('Compiler file in OS X located within the app bundle.')
+                print('アプリバンドル内にあるOS Xのコンパイラファイル')
             else:
-                print('Could not find Arduino executable in OS X app bundle.')
+                print('OS XアプリバンドルでArduino実行可能ファイルを見つけることができませんでした。')
 
         # Check directory
         if os.path.isfile(new_compiler_dir):
             self.__compiler_dir = new_compiler_dir
-            print('Compiler directory set to:\n\t%s' % self.__compiler_dir)
+            print('コンパイラパス:\n\t%s' % self.__compiler_dir)
             self.save_settings()
         else:
-            print('The provided compiler path is not valid !!!'
+            print('設定されたコンパイラパスは無効です!!!'
                   '\n\t %s' % new_compiler_dir)
             if self.__compiler_dir:
-                print('Previous compiler path maintained:\n\t%s' %
+                print('以前のコンパイラパスが維持します:\n\t%s' %
                       self.__compiler_dir)
             else:
                 self.set_compiler_dir_default()
-                print('Default compiler path set:\n\t%s' %
+                print('デフォルトのコンパイラパス:\n\t%s' %
                       self.__compiler_dir)
                 self.save_settings()
 
@@ -168,11 +168,10 @@ class ServerCompilerSettings(object):
         if os.path.exists(new_compiler_dir):
             self.__compiler_dir = new_compiler_dir
         else:
-            print('The provided compiler path in the settings file is not '
-                  'valid:')
+            print('設定ファイルのコンパイラパスが無効です:')
             print('\t%s' % new_compiler_dir)
             self.set_compiler_dir_default()
-            print('Default compiler path set:\n\t%s' % self.__compiler_dir)
+            print('デフォルトのコンパイラパス:\n\t%s' % self.__compiler_dir)
 
     #
     # Sketch name accessors
@@ -187,17 +186,17 @@ class ServerCompilerSettings(object):
         """
         if re.match("^[\w\d_-]*$", new_sketch_name):
             self.__sketch_name = new_sketch_name
-            print('Sketch name set to:\n\t%s' % self.__sketch_name)
+            print('スケッチの名前:\n\t%s' % self.__sketch_name)
             self.save_settings()
         else:
-            print('Provided Sketch name contains invalid characters: !!!'
+            print('設定されたスケッチ名には無効な文字が含まれています!!!'
                   '\n\t%s' % new_sketch_name)
             if self.__sketch_name:
-                print('Previous Sketch name maintained:\n\t%s' %
+                print('以前のスケッチ名を維持します:\n\t%s' %
                       self.__sketch_name)
             else:
                 self.set_sketch_name_default()
-                print('Default Sketch name set:\n\t%s' %
+                print('デフォルトのスケッチ名:\n\t%s' %
                       self.__sketch_name)
                 self.save_settings()
 
@@ -214,10 +213,10 @@ class ServerCompilerSettings(object):
         if re.match("^[\w\d_-]*$", new_sketch_name):
             self.__sketch_name = new_sketch_name
         else:
-            print('Settings file Sketch name contains invalid characters:'
+            print('設定ファイルのスケッチ名に無効な文字が含まれています:'
                   '\n\t%s' % new_sketch_name.decode("utf8"))
             self.set_sketch_name_default()
-            print('Default Sketch name set:\n\t%s' % self.__sketch_name)
+            print('デフォルトのスケッチ名:\n\t%s' % self.__sketch_name)
 
     #
     #  Sketch Directory accessors
@@ -229,17 +228,17 @@ class ServerCompilerSettings(object):
         """Set the sketch directory, which must be a folder."""
         if os.path.isdir(new_sketch_dir):
             self.__sketch_dir = new_sketch_dir
-            print('Sketch directory set to:\n\t%s' % self.__sketch_dir)
+            print('スケッチのパス:\n\t%s' % self.__sketch_dir)
             self.save_settings()
         else:
-            print('The provided sketch directory is not valid !!!'
+            print('設定されたスケッチのパスは無効です!!!'
                   '\n\t%s' % new_sketch_dir)
             if self.__sketch_dir:
-                print('Previous Sketch directory maintained:\n\t%s' %
+                print('以前のスケッチパスを維持します:\n\t%s' %
                       self.__sketch_dir)
             else:
                 self.set_sketch_dir_default()
-                print('Default Sketch directory set:\n\t%s' %
+                print('デフォルトのスケッチパス:\n\t%s' %
                       self.__sketch_dir)
                 self.save_settings()
 
@@ -254,10 +253,10 @@ class ServerCompilerSettings(object):
         if os.path.isdir(new_sketch_dir):
             self.__sketch_dir = new_sketch_dir
         else:
-            print('Settings file sketch directory is not valid:'
+            print('設定ファイルのスケッチパスが無効です:'
                   '\n\t%s' % new_sketch_dir)
             self.set_sketch_dir_default()
-            print('Default Sketch directory set:\n\t%s' % self.__sketch_dir)
+            print('デフォルトのスケッチパス:\n\t%s' % self.__sketch_dir)
 
     #
     # Arduino Board and board lists accessors
@@ -269,17 +268,17 @@ class ServerCompilerSettings(object):
         if new_board in self.__arduino_types:
             self.__arduino_board_value = self.__arduino_types[new_board]
             self.__arduino_board_key = new_board
-            print('Arduino Board set to:\n\t%s' % self.__arduino_board_key)
+            print('Arduinoボードの種類:\n\t%s' % self.__arduino_board_key)
             self.save_settings()
         else:
-            print('Provided Arduino Board does not exist: !!!'
+            print('設定されたArduinoボードが存在しません!!!'
                   '\n\t%s' % new_board)
             if self.__arduino_board_key and self.__arduino_board_value:
-                print('Previous Arduino board type maintained:\n\t%s' %
+                print('以前のArduinoボードの種類を維持します:\n\t%s' %
                       self.__arduino_board_key)
             else:
                 self.set_arduino_board_default()
-                print('Default Arduino board type set:\n\t%s' %
+                print('デフォルトのArduinoボード:\n\t%s' %
                       self.__arduino_board_key)
                 self.save_settings()
 
@@ -295,10 +294,10 @@ class ServerCompilerSettings(object):
             self.__arduino_board_value = self.__arduino_types[new_board]
             self.__arduino_board_key = new_board
         else:
-            print('Settings file Arduino Board does not exist:\n\t%s'
+            print('設定ファイルのArduinoボードの種類が無効です:\n\t%s'
                   % new_board)
             self.set_arduino_board_default()
-            print('Default Arduino board type set:\n\t%s' %
+            print('デフォルトのArduinoボード:\n\t%s' %
                   self.__arduino_board_key)
 
     def get_arduino_board_flag(self):
@@ -320,12 +319,12 @@ class ServerCompilerSettings(object):
         """
         self.populate_serial_port_list()
         if not self.__serial_ports:
-            print('There are no available Serial Ports !!!')
+            print('利用可能なシリアルポートが見つかりません!!!')
             self.__serial_port_key = None
             self.__serial_port_value = None
             self.save_settings()
         elif self.__serial_port_value not in self.__serial_ports.values():
-            print('The selected Serial Port is no longer available !!!')
+            print('選択されているシリアルポートが利用できなくなりました!!!')
             self.__serial_port_key = None
             self.__serial_port_value = None
             self.save_settings()
@@ -353,24 +352,24 @@ class ServerCompilerSettings(object):
             # Now we check if the Port is still available
             self.populate_serial_port_list()
             if not self.__serial_ports:
-                print('There are no available Serial Ports !!!')
+                print('利用可能なシリアルポートが見つかりません!!!')
                 self.__serial_port_key = None
                 self.__serial_port_value = None
             elif self.__serial_port_value not in self.__serial_ports.values():
-                print('The selected Serial Port is no longer available !!!')
+                print('選択されているシリアルポートが利用できなくなりました!!!')
                 self.__serial_port_key = None
                 self.__serial_port_value = None
-            print('Serial Port set to:\n\t%s' % self.__serial_port_value)
+            print('シリアルポート:\n\t%s' % self.__serial_port_value)
             self.save_settings()
         else:
-            print('Provided Serial Port is not valid: !!!'
+            print('シリアルポートが有効ではありません!!!'
                   '\n\t%s' % new_port)
             if self.__serial_port_key and self.__serial_port_value:
-                print('Previous Serial Port maintained:\n\t%s' %
+                print('以前のシリアルポート設定を維持します:\n\t%s' %
                       self.__serial_port_value)
             else:
                 self.set_serial_port_default()
-                print('Default Serial Port set:\n\t%s' %
+                print('デフォルトのシリアルポート:\n\t%s' %
                       self.__serial_port_value)
                 self.save_settings()
 
@@ -408,10 +407,10 @@ class ServerCompilerSettings(object):
                     self.__serial_port_value = value
                     set_default = False
         if set_default:
-            print('Settings file Serial Port is not currently available:'
+            print('設定ファイルのシリアルポートが利用できなくなりました:'
                   '\n\t%s' % new_port_value)
             self.set_serial_port_default()
-            print('Default Serial Port set:\n\t%s' % self.__serial_port_value)
+            print('デフォルトのシリアルポート:\n\t%s' % self.__serial_port_value)
 
     def get_serial_port_flag(self):
         """Check available Serial Ports and populates the port dictionary.
@@ -423,12 +422,12 @@ class ServerCompilerSettings(object):
         """
         self.populate_serial_port_list()
         if not self.__serial_ports:
-            print('There are no available Serial Ports !!!')
+            print('利用可能なシリアルポートが見つかりません!!!')
             self.__serial_port_key = None
             self.__serial_port_value = None
             self.save_settings()
         elif self.__serial_port_value not in self.__serial_ports.values():
-            print('The selected Serial Port is no longer available !!!')
+            print('選択されているシリアルポートが利用できなくなりました!!!')
             self.__serial_port_key = None
             self.__serial_port_value = None
             self.save_settings()
@@ -467,18 +466,18 @@ class ServerCompilerSettings(object):
     def set_load_ide(self, new_load_option):
         if new_load_option in self.__ide_load_options:
             self.__load_ide_option = new_load_option
-            print('IDE options set to:\n\t%s' %
+            print('IDE起動オプションの設定:\n\t%s' %
                   self.__ide_load_options[self.__load_ide_option])
             self.save_settings()
         else:
-            print('The provided "Load IDE option" is not valid !!!'
+            print('設定されたIDE起動オプションが無効です!!!'
                   '\n\t%s' % new_load_option)
             if self.__load_ide_option:
-                print('Previous "Load IDE option" maintained:\n\t%s' %
+                print('以前のIDE起動オプションを維持します:\n\t%s' %
                       self.__ide_load_options[self.__load_ide_option])
             else:
                 self.set_load_ide_default()
-                print('Default "Load IDE option" set:\n\t%s' %
+                print('デフォルトのIDE起動オプション:\n\t%s' %
                       self.__ide_load_options[self.__load_ide_option])
                 self.save_settings()
 
@@ -492,10 +491,10 @@ class ServerCompilerSettings(object):
         if new_load_option in self.__ide_load_options:
             self.__load_ide_option = new_load_option
         else:
-            print('Settings file "Load IDE option" is not valid:'
+            print('設定されたIDE起動オプションが無効です:'
                   '\n\t%s' % new_load_option)
             self.set_load_ide_default()
-            print('Default "Load IDE option" set:\n\t%s' %
+            print('デフォルトのIDE起動オプション:\n\t%s' %
                   self.__load_ide_option)
 
     def get_load_ide_options(self):
@@ -545,10 +544,10 @@ class ServerCompilerSettings(object):
                     config_file:
                 settings_parser.write(config_file)
         except Exception as e:
-            print('%s\nUnable to write the settings file to:\n\t%s' %
+            print('%s\n設定ファイルを書き込めません:\n\t%s' %
                   (self.__settings_path, str(e)))
         else:
-            print('Settings file saved to:\n\t%s' % self.__settings_path)
+            print('設定ファイルの保存先:\n\t%s' % self.__settings_path)
         sys.stdout.flush()
 
     def read_settings(self):
@@ -571,14 +570,14 @@ class ServerCompilerSettings(object):
             self.set_default_settings()
 
         # Printing the settings to be able to easily spot issues at load
-        print('Final settings loaded:')
-        print('\tCompiler directory: %s' % self.__compiler_dir)
-        print('\tArduino Board Key: %s' % self.__arduino_board_key)
-        print('\tArduino Board Value: %s' % self.__arduino_board_value)
-        print('\tSerial Port Value: %s' % self.__serial_port_value)
-        print('\tSketch Name: %s' % self.__sketch_name)
-        print('\tSketch Directory: %s' % self.__sketch_dir)
-        print('\tLoad IDE option: %s' % self.__load_ide_option)
+        print('下記の設定がロードされました:')
+        print('\tコンパイラパス: %s' % self.__compiler_dir)
+        print('\tArduinoボードのキー: %s' % self.__arduino_board_key)
+        print('\tArduinoボードの値: %s' % self.__arduino_board_value)
+        print('\tシリアルポートの値: %s' % self.__serial_port_value)
+        print('\tスケッチの名前: %s' % self.__sketch_name)
+        print('\tスケッチのパス: %s' % self.__sketch_dir)
+        print('\tIDE起動オプション: %s' % self.__load_ide_option)
 
         # The read X_from_file() functions do not save new settings and neither
         # does the set_default_settings() function, so save them either way.
@@ -607,9 +606,9 @@ class ServerCompilerSettings(object):
                 settings_parser.get('Arduino_Sketch', 'sketch_directory')
             settings_dict['ide_load'] =\
                 settings_parser.get('Ardublockly', 'ide_load')
-            print('Settings loaded from:\n\t%s' % self.__settings_path)
+            print('読み込む設定ファイル:\n\t%s' % self.__settings_path)
         except Exception:
-            print('Settings file corrupted or not found in:\n\t%s'
+            print('設定ファイルが壊れているか、見つかりません:\n\t%s'
                   % self.__settings_path)
             settings_dict = None
         return settings_dict

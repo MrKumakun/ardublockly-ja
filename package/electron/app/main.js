@@ -89,8 +89,8 @@ app.on('ready', function() {
 
     mainWindow.webContents.on('did-fail-load',
         function(event, errorCode, errorDescription) {
-            winston.warn(tag + 'Page failed to load (' + errorCode + '). The ' +
-                'server is probably not yet running. Trying again in 200 ms.');
+            winston.warn(tag + 'ページの読み込みに失敗しました (' + errorCode + ')。' +
+                'サーバーが起動していません。 200ミリ秒後に再試行します。');
             setTimeout(function() {
                 mainWindow.webContents.reload();
             }, 350);

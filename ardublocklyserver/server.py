@@ -34,9 +34,9 @@ def launch_server(ip='localhost', port=8000, document_root_=''):
     :return: This function DOES NOT return.
     """
     global document_root
-    print('Setting HTTP Server Document Root to:\n\t%s' % document_root_)
+    print('HTTPサーバーのドキュメントルートの設定:\n\t%s' % document_root_)
     document_root = document_root_
-    print('Launch Server:')
+    print('サーバーを起動:')
     sys.stdout.flush()
     run(app, server='waitress', host=ip, port=port, debug=True)
 
@@ -150,7 +150,7 @@ def handler_settings_not_allowed(name=None):
     :param name:  Setting value.
     :return: HTTPError 405.
     """
-    abort(405, 'Not Allowed (%s)' % name if name else 'Not Allowed')
+    abort(405, '許可されていません (%s)' % name if name else 'Not Allowed')
 
 
 @app.get('/settings')
@@ -232,7 +232,7 @@ def handler_settings_get_individual(name):
             'settings_type': 'invalid',
             'errors': [{
                 'id': 61,
-                'description': 'Unexpected setting type requested.'
+                'description': '予期しない設定タイプが設定されています'
             }]})
     response_dict.update({'success': success})
     set_header_no_cache()
@@ -258,7 +258,7 @@ def handler_settings_update_all():
         'settings_type': 'all',
         'errors': [{
             'id': 62,
-            'description': 'Settings have to be individually updated.'
+            'description': '設定は個別に更新する必要があります'
         }]
     }
 
@@ -287,7 +287,7 @@ def handler_settings_update_individual(name):
             'success': False,
             'errors': [{
                 'id': 64,
-                'description': 'Unable to parse sent JSON.'
+                'description': '受信したJSONを解析できません'
             }]
         })
     except KeyError:
@@ -295,7 +295,7 @@ def handler_settings_update_individual(name):
             'success': False,
             'errors': [{
                 'id': 65,
-                'description': 'JSON received does not have \'new_value\' key.'
+                'description': '受信したJSONには \'new_value\' キーが含まれていません'
             }]
         })
     else:
@@ -304,7 +304,7 @@ def handler_settings_update_individual(name):
                 'success': False,
                 'errors': [{
                     'id': 66,
-                    'description': 'Invalid value.'
+                    'description': '無効な値です'
                 }]
             })
         else:
@@ -331,7 +331,7 @@ def handler_settings_update_individual(name):
                                       'settings_type': 'invalid'})
                 response_dict.setdefault('errors', []).append({
                     'id': 63,
-                    'description': 'Unexpected setting type to update.'
+                    'description': '設定を更新する必要があります'
                 })
             # Check if sent value was set, might have been expanded in Settings
             if set_value in new_value:
@@ -345,7 +345,7 @@ def handler_settings_update_individual(name):
                 response_dict.update({'success': False})
                 response_dict.setdefault('errors', []).append({
                     'id': 67,
-                    'description': 'New value could not be set.'
+                    'description': '新しい値を設定できませんでした'
                 })
     set_header_no_cache()
     return response_dict
@@ -360,7 +360,7 @@ def handler_code_not_allowed():
 
     :return: HTTPError 405.
     """
-    abort(405, 'Not Allowed, code can only be sent by POST.')
+    abort(405, '許可されていません。コードはPOSTでのみ送信できます')
 
 
 @app.post('/code')
@@ -394,16 +394,16 @@ def handler_code_post():
         sketch_code = request.json['sketch_code']
     except (TypeError, ValueError, KeyError) as e:
         exit_code = 64
-        err_out = 'Unable to parse sent JSON.'
-        print('Error: Unable to parse sent JSON:\n%s' % str(e))
+        err_out = 'JSONを解析できません'
+        print('Error: 受信したJSONを解析できません:\n%s' % str(e))
     else:
         try:
             success, ide_mode, std_out, err_out, exit_code = \
                 actions.arduino_ide_send_code(sketch_code)
         except Exception as e:
             exit_code = 52
-            err_out += 'Unexpected server error.'
-            print('Error: Exception in arduino_ide_send_code:\n%s' % str(e))
+            err_out += '予期しないサーバーエラー'
+            print('Error: arduino_ide_send_code の例外が発生しました:\n%s' % str(e))
 
     response_dict.update({'success': success,
                           'ide_mode': ide_mode,
@@ -415,7 +415,7 @@ def handler_code_post():
         response_dict.update({
             'errors': [{
                 'id': exit_code,
-                'description': 'More info available in the \'ide_data\' value.'
+                'description': '詳細については、\'ide_data\' から入手できます'
             }]
         })
     set_header_no_cache()

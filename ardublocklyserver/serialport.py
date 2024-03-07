@@ -24,7 +24,7 @@ def print_ports():
     This includes the ports descriptor and hardware ID.
     """
     iterator = sorted(list_ports.comports())
-    print('Found %s ports:' % len(iterator))
+    print('見つかったポート数: %s:' % len(iterator))
     for port, descriptor, hw_id in iterator:
         print('Port: %s\n\tDescriptor: %s\n\tHardware ID: %s' %
               (port, descriptor, hw_id))
