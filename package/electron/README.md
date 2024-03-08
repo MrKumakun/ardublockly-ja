@@ -1,18 +1,17 @@
-# Ardublockly Electron project
-This is the Ardublockly Electron project for generating a cross-platform executable chromium window.
+# Ardublockly Electron プロジェクト
+クロスプラットフォームで実行可能なChromium(オープンソースのブラウザ)のウィンドウを生成し、そのうえで動作するArdublockly Electronプロジェクトです。
 
-Electron is a framework that allows cross-platform desktop applications
-using JavaScript, HTML and CSS. It is based on [io.js](http://iojs.org) and
-[Chromium](http://www.chromium.org) and is used in the [Atom
-editor](https://github.com/atom/atom).
+Electronは、JavaScript、HTML、およびCSSを使用したクロスプラットフォームデスクトップアプリケーションを構成するフレームワークです。 [io.js](http://iojs.org) と [Chromium](http://www.chromium.org) に基づいており、[Atom
+editor](https://github.com/atom/atom) エディターで使用されています。
 
-This project is based on the excellent [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) by [Jakub Szwacz](https://github.com/szwacz).
+このプロジェクトは、 [Jakub Szwacz](https://github.com/szwacz) による優れた [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) に基づいて作成されています。
 
 
-## Quick start
-The only software installation required for this project is [Node.js](https://nodejs.org).
+## クイックスタート
+このプロジェクトに必要な [Node.js](https://nodejs.org) をインストールしてください。
 
-To run, execute these commands from the Ardublockly project root directory:
+実行するには、Ardublocklyプロジェクトルートディレクトリからこれらのコマンドを実行します:  
+(訳者注: バージョンが古く、そのままでは諸々と警告が出ます。またgulp関連で動作しませんので修正が必要です)
 
 ```
 cd package/electron
@@ -20,20 +19,54 @@ npm install
 npm start
 ```
 
-This will download the Electron runtime, and install all other dependencies from the two `package.json` files (one in the the `package/electron` folder and the other in the `package/electron/app` folder).
+これにより、ランタイムがダウンロードされ、2つの `package.json`（ `package/electron`、もう1つは `package/electron/app` ）からすべての依存関係のパッケージがインストールされます。
 
 
-## Building
-To build a ready for distribution application use the command from the Ardublockly project root directory:
+2024/3 追記:  
+`gulp@3.9.1` のバージョンアップに伴うエラーと、クリティカルな脆弱性として `lodash` の問題が発生します。
+正しい回避方法ではないかもしれませんが、行った対処のメモを残してきます。
+
+### gulpのエラー問題:
+```
+[17:48:43] Requiring external module @babel/register
+fs.js:35
+} = primordials;
+    ^
+
+ReferenceError: primordials is not defined
+    at fs.js:35:5
+```
+■ 原因:  
+`graceful-fs` は、Nodeのバージョンに依存しており、gulp 3.9.x に対応したものが利用されていない。
+
+■ 回避策:  
+`graceful-fs` のバージョンを強制する。  
+install コマンド後に生成される `package-lock.json` をエディタで開き、`resolutions` 以下の `"graceful-fs": "^?.?.?"` となっている項目すべてを `"graceful-fs": "^4.2.10"` にしてしまう。  
+保存後に `npm install` を行うと再構成される。
+
+
+### lodashの脆弱性問題:
+■ 原因:  
+バージョンが古すぎてクリティカルな脆弱性を抱えている。
+
+■ 回避策:  
+install コマンド後に生成される `package-lock.json` をエディタで開き、`resolutions` 以下の `"lodash": "^?.?.?"` となっている項目すべてを `"lodash": "^4.17.21"` にしてしまう。  
+保存後に `npm install` を行うと再構成される。
+
+
+## ビルド
+再配布できるアプリケーションを構築するには、Ardublockly プロジェクトのルート ディレクトリからコマンドを使用します:
 
 ```
 cd package/electron
 npm run release
 ```
 
-It will start the packaging process for operating system you are running this command on. Ready for distribution file will be outputted to `releases` directory.
+このコマンドを実行しているオペレーティング システムのパッケージ化プロセスが開始されます。配布の準備ができたファイルが `releases` ディレクトリに出力されます。  
+(訳者注: `arduexec` フォルダに構築されます。 `releases` フォルダは空のままでした。原因調査中)
 
-You can create Windows installer only when running on Windows, the same is true for Linux and OSX. So to generate all three installers you need all three operating systems.
+
+Windowsインストーラーは Windows上で実行している場合にのみ作成できます。これは Linux および OSX にも当てはまります。したがって、3つのインストーラーをすべて生成するには、3つのオペレーティング システムすべてが必要です。
 
 
 ## License
