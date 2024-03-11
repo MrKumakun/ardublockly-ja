@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2024-03-01 17:29:33.909000",
+		"lastupdated": "2024-03-11 18:16:36.714000",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -386,5 +386,5 @@
 	"INTERRUPTS_NO_HELPURL": "https://www.arduino.cc/en/Reference/NoInterrupts",
 	"INTERRUPTS_NO_TOOLTIP": "Disables interrupts (you can re-enable them with interrupts()).",
 	"INTERRUPTS_HELPURL": "https://www.arduino.cc/en/Reference/Interrupts",
-	"INTERRUPTS_TOOLTIP": "Re-enables interrupts (after they've been disabled by noInterrupts())."
+	"INTERRUPTS_TOOLTIP": "Re-enables interrupts (after they have been disabled by noInterrupts())."
 }

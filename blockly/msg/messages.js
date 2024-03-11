@@ -1156,4 +1156,4 @@ Blockly.Msg.INTERRUPTS_NO_TOOLTIP = 'Disables interrupts (you can re-enable them
 /// url - Information about 
 Blockly.Msg.INTERRUPTS_HELPURL = 'https://www.arduino.cc/en/Reference/Interrupts';
 /// tooltip - 
-Blockly.Msg.INTERRUPTS_TOOLTIP = 'Re-enables interrupts (after they've been disabled by noInterrupts()).';
+Blockly.Msg.INTERRUPTS_TOOLTIP = 'Re-enables interrupts (after they have been disabled by noInterrupts()).';
