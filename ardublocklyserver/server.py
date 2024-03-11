@@ -56,8 +56,10 @@ def set_header_no_cache():
         response.headers[
             'Cache-Control'.encode('ascii', 'ignore')] = 'no-cache'
     else:
-        response.headers['Cache-Control'] = 'no-cache'
-
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        #response.cache_control.no_cache = None
+        #response.cache_control.max_age = 0
 
 #
 # Serving static files.

@@ -70,7 +70,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
   });
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
-      function() { Blockly.asyncSvgResize(Ardublockly.workspace); }, false);
+      function() { Blockly.resizeSvgContents(Ardublockly.workspace); }, false);
 };
 
 /** @return {!string} Generated Arduino code from the Blockly workspace. */
