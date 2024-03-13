@@ -33,6 +33,7 @@ goog.require('Blockly.Connection');
  * Class for a connection between blocks that may be rendered on screen.
  * @param {!Blockly.Block} source The block establishing this connection.
  * @param {number} type The type of the connection.
+ * @extends {Blockly.Connection}
  * @constructor
  */
 Blockly.RenderedConnection = function(source, type) {
@@ -186,10 +187,7 @@ Blockly.RenderedConnection.prototype.closest = function(maxLimit, dx, dy) {
 Blockly.RenderedConnection.prototype.highlight = function() {
   var steps;
   if (this.type == Blockly.INPUT_VALUE || this.type == Blockly.OUTPUT_VALUE) {
-    var tabWidth = this.sourceBlock_.RTL ? -Blockly.BlockSvg.TAB_WIDTH :
-        Blockly.BlockSvg.TAB_WIDTH;
     steps = 'm 0,0 ' + Blockly.BlockSvg.TAB_PATH_DOWN + ' v 5';
-
   } else {
     steps = 'm -20,0 h 5 ' + Blockly.BlockSvg.NOTCH_PATH_LEFT + ' h 5';
   }
@@ -337,8 +335,8 @@ Blockly.RenderedConnection.prototype.respawnShadow_ = function() {
   // Respawn the shadow block if there is one.
   var shadow = this.getShadowDom();
   if (parentBlock.workspace && shadow && Blockly.Events.recordUndo) {
-    var blockShadow =
         Blockly.RenderedConnection.superClass_.respawnShadow_.call(this);
+    var blockShadow = this.targetBlock();
     if (!blockShadow) {
       throw 'Couldn\'t respawn the shadow block that should exist here.';
     }
