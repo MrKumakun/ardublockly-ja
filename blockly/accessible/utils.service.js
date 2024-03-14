@@ -18,8 +18,10 @@
  */
 
 /**
- * @fileoverview Angular2 Service with functions required by multiple
- * components.
+ * @fileoverview Angular2 utility service for multiple components. All
+ * functions in this service should be stateless, since this is a singleton
+ * service that is used for the entire application.
+ *
  * @author madeeha@google.com (Madeeha Ghori)
  */
 
@@ -27,8 +29,7 @@ var blocklyApp = {};
 
 blocklyApp.UtilsService = ng.core
   .Class({
-    constructor: function() {
-    },
+    constructor: function() {},
     generateUniqueId: function() {
       return 'blockly-' + Blockly.genUid();
     },
@@ -39,8 +40,12 @@ blocklyApp.UtilsService = ng.core
       }
       return idMap;
     },
-    generateAriaLabelledByAttr: function() {
-      return Array.from(arguments).join(' ').trim();
+    generateAriaLabelledByAttr: function(mainLabel, secondLabel, isDisabled) {
+      var attrValue = mainLabel + ' ' + secondLabel;
+      if (isDisabled) {
+        attrValue += ' blockly-disabled';
+      }
+      return attrValue;
     },
     getInputTypeLabel: function(connection) {
       // Returns an upper case string in the case of official input type names.
@@ -59,17 +64,6 @@ blocklyApp.UtilsService = ng.core
         return Blockly.Msg.STATEMENT;
       } else {
         return Blockly.Msg.VALUE;
-      }
-    },
-    getMarkedBlockCompatibilityHTMLText: function(isCompatible) {
-      if (isCompatible) {
-        // undefined will result in the
-        // 'copy to marked block' option being ENABLED.
-        return '';
-      } else {
-        // Anything will result in the
-        // 'copy to marked block' option being DISABLED.
-        return 'blockly-disabled';
       }
     }
   });

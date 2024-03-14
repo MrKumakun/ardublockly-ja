@@ -34,7 +34,6 @@ blocklyApp.ClipboardService = ng.core
       var blockSummary = block.toString();
       this.copy(block, false);
       block.dispose(true);
-      blocklyApp.debug && console.log('cut');
       alert(Blockly.Msg.CUT_BLOCK_MSG + blockSummary);
     },
     copy: function(block, announce) {
@@ -42,7 +41,6 @@ blocklyApp.ClipboardService = ng.core
       this.clipboardBlockSuperiorConnection_ = block.outputConnection ||
           block.previousConnection;
       this.clipboardBlockNextConnection_ = block.nextConnection;
-      blocklyApp.debug && console.log('copy');
       if (announce) {
         alert(Blockly.Msg.COPIED_BLOCK_MSG + block.toString());
       }
@@ -60,8 +58,9 @@ blocklyApp.ClipboardService = ng.core
         default:
           connection.connect(reconstitutedBlock.outputConnection);
       }
-      blocklyApp.debug && console.log('paste');
-      alert(Blockly.Msg.PASTED_BLOCK_FROM_CLIPBOARD_MSG + block.toString());
+      alert(
+          Blockly.Msg.PASTED_BLOCK_FROM_CLIPBOARD_MSG +
+          reconstitutedBlock.toString());
     },
     pasteToMarkedConnection: function(block, announce) {
       var xml = Blockly.Xml.blockToDom(block);
@@ -70,50 +69,37 @@ blocklyApp.ClipboardService = ng.core
       this.markedConnection_.connect(
           reconstitutedBlock.outputConnection ||
           reconstitutedBlock.previousConnection);
-      blocklyApp.debug && console.log('paste to marked connection');
       if (announce) {
-        alert(Blockly.Msg.PASTED_BLOCK_TO_MARKED_SPOT_MSG + block.toString());
+        alert(
+            Blockly.Msg.PASTED_BLOCK_TO_MARKED_SPOT_MSG +
+            reconstitutedBlock.toString());
       }
     },
     markConnection: function(connection) {
       this.markedConnection_ = connection;
-      blocklyApp.debug && console.log('mark connection');
       alert(Blockly.Msg.MARKED_SPOT_MSG);
     },
     isCompatibleWithConnection_: function(blockConnection, connection) {
-      // Checking that the connection and blockConnection exist.
-      if (!connection || !blockConnection) {
-        return false;
-      }
-
-      // Checking that the types match and it's the right kind of connection.
-      var isCompatible = Blockly.OPPOSITE_TYPE[blockConnection.type] ==
-          connection.type && connection.checkType_(blockConnection);
-
-      if (blocklyApp.debug) {
-        if (isCompatible) {
-          console.log('blocks should be connected');
-        } else {
-          console.log('blocks should not be connected');
-        }
-      }
-      return isCompatible;
+      // Check that both connections exist, that the types match, and that it's
+      // the right kind of connection.
+      return Boolean(
+          connection && blockConnection &&
+          Blockly.OPPOSITE_TYPE[blockConnection.type] == connection.type &&
+          connection.checkType_(blockConnection));
     },
     isBlockCompatibleWithMarkedConnection: function(block) {
       var blockConnection = block.outputConnection || block.previousConnection;
-      return this.markedConnection_ &&
+      return Boolean(
+          this.markedConnection_ &&
           this.markedConnection_.sourceBlock_.workspace &&
           this.isCompatibleWithConnection_(
-              blockConnection, this.markedConnection_);
+              blockConnection, this.markedConnection_));
     },
-    getClipboardCompatibilityHTMLText: function(connection) {
-      if (this.isCompatibleWithConnection_(connection,
-          this.clipboardBlockSuperiorConnection_) ||
-          this.isCompatibleWithConnection_(connection,
-          this.clipboardBlockNextConnection_)){
-        return '';
-      } else {
-        return 'blockly-disabled';
-      }
+    isClipboardCompatibleWithConnection: function(connection) {
+      var superiorConnection = this.clipboardBlockSuperiorConnection_;
+      var nextConnection = this.clipboardBlockNextConnection_;
+      return Boolean(
+          this.isCompatibleWithConnection_(connection, superiorConnection) ||
+          this.isCompatibleWithConnection_(connection, nextConnection));
     }
   });

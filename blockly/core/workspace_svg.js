@@ -65,6 +65,12 @@ Blockly.WorkspaceSvg = function(options) {
 goog.inherits(Blockly.WorkspaceSvg, Blockly.Workspace);
 
 /**
+ * Wrapper function called when a resize event occurs.
+ * @type {Array.<!Array>} Data that can be passed to unbindEvent_
+ */
+Blockly.WorkspaceSvg.prototype.resizeHandlerWrapper_ = null;
+
+/**
  * Svg workspaces are user-visible (as opposed to a headless workspace).
  * @type {boolean} True if visible.  False if headless.
  */
@@ -139,6 +145,36 @@ Blockly.WorkspaceSvg.prototype.scrollbar = null;
 Blockly.WorkspaceSvg.prototype.lastSound_ = null;
 
 /**
+ * Inverted screen CTM, for use in mouseToSvg.
+ * @type {SVGMatrix}
+ * @private
+ */
+Blockly.WorkspaceSvg.prototype.inverseScreenCTM_ = null;
+
+/**
+ * Getter for the inverted screen CTM.
+ * @return {SVGMatrix} The matrix to use in mouseToSvg
+ */
+Blockly.WorkspaceSvg.prototype.getInverseScreenCTM = function() {
+  return this.inverseScreenCTM_;
+};
+
+/**
+ * Update the inverted screen CTM.
+ */
+Blockly.WorkspaceSvg.prototype.updateInverseScreenCTM = function() {
+  this.inverseScreenCTM_ = this.getParentSvg().getScreenCTM().inverse();
+};
+
+/**
+ * Save resize handler data so we can delete it later in dispose.
+ * @param {!Array.<!Array>} handler Data that can be passed to unbindEvent_.
+ */
+Blockly.WorkspaceSvg.prototype.setResizeHandlerWrapper = function(handler) {
+  this.resizeHandlerWrapper_ = handler;
+};
+
+/**
  * Create the workspace DOM elements.
  * @param {string=} opt_backgroundClass Either 'blocklyMainBackground' or
  *     'blocklyMutatorBackground'.
@@ -197,6 +233,7 @@ Blockly.WorkspaceSvg.prototype.createDom = function(opt_backgroundClass) {
     this.addFlyout_();
   }
   this.updateGridPattern_();
+  this.recordDeleteAreas();
   return this.svgGroup_;
 };
 
@@ -237,6 +274,10 @@ Blockly.WorkspaceSvg.prototype.dispose = function() {
   if (!this.options.parentWorkspace) {
     // Top-most workspace.  Dispose of the SVG too.
     goog.dom.removeNode(this.getParentSvg());
+  }
+  if (this.resizeHandlerWrapper_) {
+    Blockly.unbindEvent_(this.resizeHandlerWrapper_);
+    this.resizeHandlerWrapper_ = null;
   }
 };
 
@@ -312,6 +353,7 @@ Blockly.WorkspaceSvg.prototype.resizeContents = function() {
     // based on contents.
     this.scrollbar.resize();
   }
+  this.updateInverseScreenCTM();
 };
 
 /**
@@ -337,6 +379,9 @@ Blockly.WorkspaceSvg.prototype.resize = function() {
   if (this.scrollbar) {
     this.scrollbar.resize();
   }
+
+  this.updateInverseScreenCTM();
+  this.recordDeleteAreas();
 };
 
 /**
@@ -643,7 +688,8 @@ Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
  */
 Blockly.WorkspaceSvg.prototype.startDrag = function(e, xy) {
   // Record the starting offset between the bubble's location and the mouse.
-  var point = Blockly.mouseToSvg(e, this.getParentSvg());
+  var point = Blockly.mouseToSvg(e, this.getParentSvg(),
+      this.getInverseScreenCTM());
   // Fix scale of mouse event.
   point.x /= this.scale;
   point.y /= this.scale;
@@ -656,7 +702,8 @@ Blockly.WorkspaceSvg.prototype.startDrag = function(e, xy) {
  * @return {!goog.math.Coordinate} New location of object.
  */
 Blockly.WorkspaceSvg.prototype.moveDrag = function(e) {
-  var point = Blockly.mouseToSvg(e, this.getParentSvg());
+  var point = Blockly.mouseToSvg(e, this.getParentSvg(),
+      this.getInverseScreenCTM());
   // Fix scale of mouse event.
   point.x /= this.scale;
   point.y /= this.scale;
@@ -672,7 +719,8 @@ Blockly.WorkspaceSvg.prototype.onMouseWheel_ = function(e) {
   // TODO: Remove terminateDrag and compensate for coordinate skew during zoom.
   Blockly.terminateDrag_();
   var delta = e.deltaY > 0 ? -1 : 1;
-  var position = Blockly.mouseToSvg(e, this.getParentSvg());
+  var position = Blockly.mouseToSvg(e, this.getParentSvg(),
+      this.getInverseScreenCTM());
   this.zoom(position.x, position.y, delta);
   e.preventDefault();
 };
@@ -932,7 +980,7 @@ Blockly.WorkspaceSvg.prototype.playAudio = function(name, opt_volume) {
   var sound = this.SOUNDS_[name];
   if (sound) {
     // Don't play one sound on top of another.
-    var now = new Date();
+    var now = new Date;
     if (now - this.lastSound_ < Blockly.SOUND_LIMIT) {
       return;
     }

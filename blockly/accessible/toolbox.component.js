@@ -23,9 +23,9 @@
  * @author madeeha@google.com (Madeeha Ghori)
  */
 
-blocklyApp.ToolboxView = ng.core
+blocklyApp.ToolboxComponent = ng.core
   .Component({
-    selector: 'toolbox-view',
+    selector: 'blockly-toolbox',
     template: `
       <h3 #toolboxTitle id="blockly-toolbox-title">Toolbox</h3>
       <ol #tree
@@ -39,35 +39,34 @@ blocklyApp.ToolboxView = ng.core
               [id]="idMap['Parent' + i]" role="treeitem"
               [ngClass]="{blocklyHasChildren: true, blocklyActiveDescendant: tree.getAttribute('aria-activedescendant') == idMap['Parent' + i]}"
               *ngFor="#category of toolboxCategories; #i=index"
-              aria-level="1" aria-selected=false>
+              aria-level="1" aria-selected=false
+              [attr.aria-label]="category.attributes.name.value">
             <div *ngIf="category && category.attributes">
               <label [id]="idMap['Label' + i]" #name>
                 {{category.attributes.name.value}}
               </label>
-              {{labelCategory(name, i, tree)}}
               <ol role="group" *ngIf="getToolboxWorkspace(category).topBlocks_.length > 0">
-                <toolbox-tree-view *ngFor="#block of getToolboxWorkspace(category).topBlocks_"
-                                   [level]=2 [block]="block"
-                                   [displayBlockMenu]="true"
-                                   [clipboardService]="clipboardService">
-                </toolbox-tree-view>
+                <blockly-toolbox-tree *ngFor="#block of getToolboxWorkspace(category).topBlocks_"
+                                      [level]=2 [block]="block"
+                                      [displayBlockMenu]="true"
+                                      [tree]="tree">
+                </blockly-toolbox-tree>
               </ol>
             </div>
           </li>
         </template>
         <div *ngIf="!xmlHasCategories">
-          <toolbox-tree-view *ngFor="#block of getToolboxWorkspace(toolboxCategories[0]).topBlocks_; #i=index"
-                             [level]=1 [block]="block"
-                             [displayBlockMenu]="true"
-                             [clipboardService]="clipboardService"
-                             [index]="i" [tree]="tree"
-                             [noCategories]="true">
-          </toolbox-tree-view>
+          <blockly-toolbox-tree *ngFor="#block of getToolboxWorkspace(toolboxCategories[0]).topBlocks_; #i=index"
+                                [level]=1 [block]="block"
+                                [displayBlockMenu]="true"
+                                [index]="i" [tree]="tree"
+                                [noCategories]="true"
+                                [isTopLevel]="true">
+          </blockly-toolbox-tree>
         </div>
       </ol>
     `,
-    directives: [blocklyApp.ToolboxTreeView],
-    providers: [blocklyApp.TreeService, blocklyApp.UtilsService],
+    directives: [blocklyApp.ToolboxTreeComponent]
   })
   .Class({
     constructor: [
@@ -95,24 +94,22 @@ blocklyApp.ToolboxView = ng.core
           elementsNeedingIds.push('Parent' + i, 'Label' + i);
         }
         this.idMap = this.utilsService.generateIds(elementsNeedingIds);
-        this.idMap['Parent0'] = 'blockly-toolbox-tree-node0';
+        for (var i = 0; i < this.toolboxCategories.length; i++) {
+          this.idMap['Parent' + i] = 'blockly-toolbox-tree-node' + i;
+        }
       } else {
         // Create a single category is created with all the top-level blocks.
         this.xmlHasCategories = false;
         this.toolboxCategories = [Array.from(xmlToolboxElt.children)];
       }
     },
-    labelCategory: function(label, i, tree) {
-      var parent = label.parentNode;
-      while (parent && parent.tagName != 'LI') {
-        parent = parent.parentNode;
-      }
-      parent.setAttribute('aria-label', label.innerText);
-      parent.id = 'blockly-toolbox-tree-node' + i;
-      if (i == 0 && tree.getAttribute('aria-activedescendant') ==
-          'blockly-toolbox-tree-node0') {
-        this.treeService.setActiveDesc(parent, tree.id);
-        parent.setAttribute('aria-selected', 'true');
+    ngAfterViewInit: function() {
+      // If this is a top-level tree in the toolbox, set its active
+      // descendant after the ids have been computed.
+      if (this.xmlHasCategories) {
+        this.treeService.setActiveDesc(
+            document.getElementById('blockly-toolbox-tree-node0'),
+            document.getElementById('blockly-toolbox-tree'));
       }
     },
     getToolboxWorkspace: function(categoryNode) {

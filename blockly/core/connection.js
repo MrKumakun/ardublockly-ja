@@ -346,8 +346,7 @@ Blockly.Connection.prototype.checkConnection_ = function(target) {
 Blockly.Connection.prototype.isConnectionAllowed = function(candidate) {
   // Type checking.
   var canConnect = this.canConnectWithReason_(candidate);
-  if (canConnect != Blockly.Connection.CAN_CONNECT &&
-      canConnect != Blockly.Connection.REASON_MUST_DISCONNECT) {
+  if (canConnect != Blockly.Connection.CAN_CONNECT) {
     return false;
   }
 
@@ -371,10 +370,14 @@ Blockly.Connection.prototype.isConnectionAllowed = function(candidate) {
   }
 
   // Don't let a block with no next connection bump other blocks out of the
-  // stack.
+  // stack.  But covering up a shadow block or stack of shadow blocks is fine.
+  // Similarly, replacing a terminal statement with another terminal statement
+  // is allowed.
   if (this.type == Blockly.PREVIOUS_STATEMENT &&
       candidate.isConnected() &&
-      !this.sourceBlock_.nextConnection) {
+      !this.sourceBlock_.nextConnection &&
+      !candidate.targetBlock().isShadow() &&
+      candidate.targetBlock().nextConnection) {
     return false;
   }
 

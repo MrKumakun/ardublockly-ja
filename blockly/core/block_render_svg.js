@@ -585,7 +585,6 @@ Blockly.BlockSvg.prototype.renderMoveConnections_ = function() {
  * Render the top edge of the block.
  * @param {!Array.<string>} steps Path of block outline.
  * @param {!Array.<string>} highlightSteps Path of block highlights.
- * @param {!Object} connectionsXY Location of block.
  * @param {number} rightEdge Minimum width of block.
  * @private
  */
