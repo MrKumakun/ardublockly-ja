@@ -114,13 +114,13 @@ def edit_mkdocs_config(pages_str):
     with open(temp_abs_path, 'w') as temp_file:
         with open(mkdocs_yml) as original_file:
             for line in original_file:
-                if "pages:" not in line:
+                if "nav:" not in line:
                     temp_file.write(line)
                 else:
-                    print("Replacing 'pages' property found in mkdocs.yml ...")
+                    print("Replacing 'nav' property found in mkdocs.yml ...")
                     break
             else:
-                print("Did not find the 'pages' property in mkdocs.yml file." +
+                print("Did not find the 'nav' property in mkdocs.yml file." +
                       "Attaching the property at the end.")
             temp_file.write(pages_str)
 
@@ -156,7 +156,7 @@ def generate_pages_from_sidebar():
         sidebar_data = sidebar_file.readlines()
         print("sidebar file data:\n\t%s\n" % "\t".join(sidebar_data))
 
-    yml_sections = ["pages:\n"]
+    yml_sections = ["nav:\n"]
     for line in sidebar_data:
         yml_sections.append(line.replace("[", "").replace("](", ": '")
                             .replace(")", ".md'"))
