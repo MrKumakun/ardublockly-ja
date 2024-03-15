@@ -33,10 +33,12 @@ goog.require('Blockly.Connection');
  * Class for a connection between blocks that may be rendered on screen.
  * @param {!Blockly.Block} source The block establishing this connection.
  * @param {number} type The type of the connection.
+ * @extends {Blockly.Connection}
  * @constructor
  */
 Blockly.RenderedConnection = function(source, type) {
   Blockly.RenderedConnection.superClass_.constructor.call(this, source, type);
+  this.offsetInBlock_ = new goog.math.Coordinate(0, 0);
 };
 goog.inherits(Blockly.RenderedConnection, Blockly.Connection);
 
@@ -83,7 +85,8 @@ Blockly.RenderedConnection.prototype.bumpAwayFrom_ = function(staticConnection) 
     reverse = true;
   }
   // Raise it to the top for extra visibility.
-  rootBlock.getSvgRoot().parentNode.appendChild(rootBlock.getSvgRoot());
+  var selected = Blockly.selected == rootBlock;
+  selected || rootBlock.select();
   var dx = (staticConnection.x_ + Blockly.SNAP_RADIUS) - this.x_;
   var dy = (staticConnection.y_ + Blockly.SNAP_RADIUS) - this.y_;
   if (reverse) {
@@ -94,6 +97,7 @@ Blockly.RenderedConnection.prototype.bumpAwayFrom_ = function(staticConnection) 
     dx = -dx;
   }
   rootBlock.moveBy(dx, dy);
+  selected || rootBlock.unselect();
 };
 
 /**
@@ -121,6 +125,27 @@ Blockly.RenderedConnection.prototype.moveTo = function(x, y) {
  */
 Blockly.RenderedConnection.prototype.moveBy = function(dx, dy) {
   this.moveTo(this.x_ + dx, this.y_ + dy);
+};
+
+/**
+ * Move this connection to the location given by its offset within the block and
+ * the coordinate of the block's top left corner.
+ * @param {!goog.math.Coordinate} blockTL The coordinate of the top left corner
+ *     of the block.
+ */
+Blockly.RenderedConnection.prototype.moveToOffset = function(blockTL) {
+  this.moveTo(blockTL.x + this.offsetInBlock_.x,
+      blockTL.y + this.offsetInBlock_.y);
+};
+
+/**
+ * Set the offset of this connection relative to the top left of its block.
+ * @param {number} x The new relative x.
+ * @param {number} y The new relative y.
+ */
+Blockly.RenderedConnection.prototype.setOffsetInBlock = function(x, y) {
+  this.offsetInBlock_.x = x;
+  this.offsetInBlock_.y = y;
 };
 
 /**
@@ -164,10 +189,7 @@ Blockly.RenderedConnection.prototype.closest = function(maxLimit, dx, dy) {
 Blockly.RenderedConnection.prototype.highlight = function() {
   var steps;
   if (this.type == Blockly.INPUT_VALUE || this.type == Blockly.OUTPUT_VALUE) {
-    var tabWidth = this.sourceBlock_.RTL ? -Blockly.BlockSvg.TAB_WIDTH :
-        Blockly.BlockSvg.TAB_WIDTH;
     steps = 'm 0,0 ' + Blockly.BlockSvg.TAB_PATH_DOWN + ' v 5';
-
   } else {
     steps = 'm -20,0 h 5 ' + Blockly.BlockSvg.NOTCH_PATH_LEFT + ' h 5';
   }
@@ -315,8 +337,8 @@ Blockly.RenderedConnection.prototype.respawnShadow_ = function() {
   // Respawn the shadow block if there is one.
   var shadow = this.getShadowDom();
   if (parentBlock.workspace && shadow && Blockly.Events.recordUndo) {
-    var blockShadow =
         Blockly.RenderedConnection.superClass_.respawnShadow_.call(this);
+    var blockShadow = this.targetBlock();
     if (!blockShadow) {
       throw 'Couldn\'t respawn the shadow block that should exist here.';
     }

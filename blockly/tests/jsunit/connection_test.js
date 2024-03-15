@@ -33,13 +33,19 @@ var dummyWorkspace;
 
 function connectionTest_setUp() {
   dummyWorkspace = {};
-  input = new Blockly.Connection({workspace: dummyWorkspace},
+  function createDummyBlock() {
+    return {
+      workspace: dummyWorkspace,
+      isShadow: function() {return false;}
+    };
+  }
+  input = new Blockly.Connection(createDummyBlock(),
       Blockly.INPUT_VALUE);
-  output = new Blockly.Connection({workspace: dummyWorkspace},
+  output = new Blockly.Connection(createDummyBlock(),
       Blockly.OUTPUT_VALUE);
-  previous = new Blockly.Connection({workspace: dummyWorkspace},
+  previous = new Blockly.Connection(createDummyBlock(),
       Blockly.PREVIOUS_STATEMENT);
-  next = new Blockly.Connection({workspace: dummyWorkspace},
+  next = new Blockly.Connection(createDummyBlock(),
       Blockly.NEXT_STATEMENT);
 }
 
@@ -303,7 +309,8 @@ function test_isConnectionAllowed_NoNext() {
   three.sourceBlock_.previousConnection = three;
   Blockly.Connection.connectReciprocally_(one, three);
 
-  assertFalse(two.isConnectionAllowed(one));
+  // A terminal block is allowed to replace another terminal block.
+  assertTrue(two.isConnectionAllowed(one));
 }
 
 function testCheckConnection_Okay() {

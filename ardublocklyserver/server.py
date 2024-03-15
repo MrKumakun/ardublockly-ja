@@ -53,11 +53,15 @@ def set_header_no_cache():
     Implementation depends on Python version.
     """
     if sys.version_info[0] < 3:
-        response.headers[
-            'Cache-Control'.encode('ascii', 'ignore')] = 'no-cache'
+        response.headers['Pragma'.encode('ascii', 'ignore')] = 'no-cache'
+        response.headers['Cache-Control'.encode('ascii', 'ignore')] = 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0'
+        response.headers['Expires'.encode('ascii', 'ignore')] = '0'
     else:
-        response.headers['Cache-Control'] = 'no-cache'
-
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0'
+        response.headers['Expires'] = '0'       
+        #response.cache_control.no_cache = None
+        #response.cache_control.max_age = 0
 
 #
 # Serving static files.
