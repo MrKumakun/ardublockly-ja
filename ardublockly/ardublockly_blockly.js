@@ -71,6 +71,9 @@ Ardublockly.bindBlocklyEventListeners = function() {
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
       function() { Blockly.resizeSvgContents(Ardublockly.workspace); }, false);
+  //TODO: Detects that the screen has been rotated
+  window.addEventListener('orientionchange',
+      function() { Blockly.resizeSvgContents(Ardublockly.workspace); }, false);    
 };
 
 /** @return {!string} Generated Arduino code from the Blockly workspace. */

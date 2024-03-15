@@ -149,14 +149,35 @@ Blockly.svgSize = function(svg) {
 };
 
 /**
+ * Flag indicating a resize event is scheduled.
+ * Used to fire only one resize after multiple changes.
+ * @type {boolean}
+ * @private
+ */
+Blockly.svgResizePending_ = false;
+
+/**
  * Size the workspace when the contents change.  This also updates
  * scrollbars accordingly.
  * @param {!Blockly.WorkspaceSvg} workspace The workspace to resize.
  */
 Blockly.resizeSvgContents = function(workspace) {
-  workspace.resizeContents();
-};
+  if (Blockly.svgResizePending_) {
+    return;
+  }
+  Blockly.svgResizePending_ = true;
+  if (!workspace) {
+    workspace = Blockly.getMainWorkspace();
+  }
+  setTimeout(function() {
+    Blockly.svgResize(workspace);
+  }, 1);
 
+  //TODO: 
+  // New implementation did not work correctly, so we reverted to the previous implementation.
+  // Reason is that the correct window size cannot be obtained when the window is resized large.
+  //workspace.resizeContents();
+};
 
 /**
  * Size the SVG image to completely fill its container. Call this when the view
@@ -167,6 +188,8 @@ Blockly.resizeSvgContents = function(workspace) {
  * @param {!Blockly.WorkspaceSvg} workspace Any workspace in the SVG.
  */
 Blockly.svgResize = function(workspace) {
+  Blockly.svgResizePending_ = false;
+
   var mainWorkspace = workspace;
   while (mainWorkspace.options.parentWorkspace) {
     mainWorkspace = mainWorkspace.options.parentWorkspace;
