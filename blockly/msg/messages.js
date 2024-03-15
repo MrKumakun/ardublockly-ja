@@ -338,6 +338,7 @@ Blockly.Msg.MATH_TRIG_ATAN = 'atan';
 
 /// math - Radians and Degrees are two ways of measuring the same thing
 Blockly.Msg.MATH_ANG_DEG = 'degrees';
+/// math - Radians and Degrees are two ways of measuring the same thing
 Blockly.Msg.MATH_ANG_RAD = 'radian';
 
 /// url - Information about addition, subtraction, multiplication, division, and exponentiation.
@@ -1132,14 +1133,16 @@ Blockly.Msg.PROCEDURES_IFRETURN_HELPURL = 'http://c2.com/cgi/wiki?GuardClause';
 /// warning - This appears if the user tries to use this block outside of a function definition.
 Blockly.Msg.PROCEDURES_IFRETURN_WARNING = 'Warning: This block may be used only within a function definition.';
 
-// Interpput Blocks.
-///
+/**
+ * Interpput Blocks.
+ */ 
+/// Attach Interrupt
 Blockly.Msg.INTERRUPTS_ATTACH_TITLE = 'Attach Interrupt';
-///
+/// Detach Interrupt
 Blockly.Msg.INTERRUPTS_DETACH_TITLE = 'Detach Interrupt';
-///
+/// Enable Interrupt
 Blockly.Msg.INTERRUPTS_TITLE = 'Enable Interrupt';
-///
+/// Disable Interrupt
 Blockly.Msg.INTERRUPTS_NO_TITLE = 'Disable Interrupt';
 /// url - Information about 
 Blockly.Msg.INTERRUPTS_ATTACH_HELPURL = 'https://www.arduino.cc/en/Reference/AttachInterrupt';
