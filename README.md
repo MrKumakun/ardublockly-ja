@@ -19,7 +19,23 @@ Ardublocklyは、まだ開発中であり、いくつかの機能はまだ実装
 
 現在、Windows では Python 2.7 および 3.4 を使用し、Linux および MacOS X では Python 2.7 でテストされています。
 
-(訳者注: ビルド情報: ベースとなるBlocklyは古いバージョンが使用されており、ビルドには 2.7 環境が必須です。サーバーは 3.9 以上では起動できません。~~また、Google Closure Library のバージョンも古く、一部、オンライン経由で実行される機能が失われています。その為、完全なビルドができません~~ →修正しました)
+> [!TIP]
+> ビルド情報: ベースとなるBlocklyは古いバージョンが使用されており、ビルドには 2.7 環境が必須です。サーバーは 3.9 以上では起動できません。~~また、Google Closure Library のバージョンも古く、一部、オンライン経由で実行される機能が失われています。その為、完全なビルドができません~~ →修正しました
+
+> [!NOTE]
+> 2024/3 メモ: Python 2.7 の環境で pip のアップグレードとvirtualenvのインストール  
+> ```
+> #
+> # python2.7 pip upgrade and virtualenv install.
+> #
+> pip install ez-setup
+> easy_install pip==20.3.4
+> 
+> pip install virtualenv
+> python -m virtualenv .venv27
+> ```
+> Windowsの場合はパスを通しておくこと。  
+> `SET PATH=%LOCALAPPDATA%\Python\Python27;%LOCALAPPDATA%\Python\Python27\Scripts;%PATH%`
 
 
 ## リポジトリのクローン時にはサブモジュールの初期化を忘れずに
@@ -40,7 +56,8 @@ git submodule update --init --recursive
 #### 開発ビルド
 GitHub リポジトリに更新が追加されるたびに自動的に生成される __UNSTABLE__ 開発ビルドをテストすることもできます。
 
-(訳者注: 現在は正常に稼働していない？)
+> [!CAUTION]
+> 訳者注: 現在は正常に稼働していない？
 
 | Linux build         | Windows build       | Mac OS X build       |
 |:-------------------:|:-------------------:|:--------------------:|
@@ -60,7 +77,8 @@ python start.py
 
 これは、Python > 2.7 または > 3.4 を搭載した、 Windows、Linux (ARM を含む)、Mac OS X で動作します。
 
-(訳者注: Python の仕様変更に伴い < 3.8 であること。Windows 3.6.8 で動作確認済み)
+> [!TIP]
+> 訳者注: Python の仕様変更に伴い < 3.8 であること。Windows 3.6.8 で動作確認済み
 
 
 ## 起動方法
@@ -73,7 +91,8 @@ python start.py
 ## オンラインデモ
 Ardublockly メイン インターフェイスの最新リリースのデモは、次の 2 つのリンクにあります (コードを Arduino にロードするには、完全な Ardublockly アプリケーションをダウンロードしてコンピュータで実行する必要があります)。
 
-(訳者注: リンク先は本家の英語版)
+> [!TIP]
+> 訳者注: リンク先は本家の英語版
 
 #### [Ardublockly][10]
 ![WebApp screenshot responsive design][web_screenshot_responsive]
