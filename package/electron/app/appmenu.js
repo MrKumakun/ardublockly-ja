@@ -408,8 +408,25 @@ var getDevMenuData = function() {
                 }
             }, {
                 type: 'separator'
+            }, {
+                label: 'Blockly デモ',
+                click: function() {
+                    shell.openExternal('http://localhost:8000/blockly/demos/index.html');
+                } 
+            }, {
+                label: 'Playground 環境',
+                click: function() {
+                    shell.openExternal('http://localhost:8000/blockly/tests/playground.html');
+                } 
+            }, {
+                label: 'Playground マルチ環境',
+                click: function() {
+                    shell.openExternal('http://localhost:8000/blockly/tests/multi_playground.html');
+                } 
+            }, {
+                type: 'separator'
             },  {
-                label: 'テストメニュー',
+                label: 'メニュー テスト',
                 click: testFunction
             }
         ]
