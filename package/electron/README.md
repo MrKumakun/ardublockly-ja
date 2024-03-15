@@ -11,7 +11,9 @@ editor](https://github.com/atom/atom) エディターで使用されています
 このプロジェクトに必要な [Node.js](https://nodejs.org) をインストールしてください。
 
 実行するには、Ardublocklyプロジェクトルートディレクトリからこれらのコマンドを実行します:  
-(訳者注: バージョンが古く、そのままでは諸々と警告が出ます。またgulp関連で動作しませんので修正が必要です)
+
+> [!IMPORTANT]
+> ビルド情報: バージョンが古く、そのままでは諸々と警告が出ます。またgulp関連で動作しませんので修正が必要です
 
 ```
 cd package/electron
@@ -22,36 +24,37 @@ npm start
 これにより、ランタイムがダウンロードされ、2つの `package.json`（ `package/electron`、もう1つは `package/electron/app` ）からすべての依存関係のパッケージがインストールされます。
 
 
-2024/3 追記:  
-`gulp@3.9.1` のバージョンアップに伴うエラーと、クリティカルな脆弱性として `lodash` の問題が発生します。
-正しい回避方法ではないかもしれませんが、行った対処のメモを残してきます。
-
-### gulpのエラー問題:
-```
-[17:48:43] Requiring external module @babel/register
-fs.js:35
-} = primordials;
-    ^
-
-ReferenceError: primordials is not defined
-    at fs.js:35:5
-```
-■ 原因:  
-`graceful-fs` は、Nodeのバージョンに依存しており、gulp 3.9.x に対応したものが利用されていない。
-
-■ 回避策:  
-`graceful-fs` のバージョンを強制する。  
-install コマンド後に生成される `package-lock.json` をエディタで開き、`resolutions` 以下の `"graceful-fs": "^?.?.?"` となっている項目すべてを `"graceful-fs": "^4.2.10"` にしてしまう。  
-保存後に `npm install` を行うと再構成される。
-
-
-### lodashの脆弱性問題:
-■ 原因:  
-バージョンが古すぎてクリティカルな脆弱性を抱えている。
-
-■ 回避策:  
-install コマンド後に生成される `package-lock.json` をエディタで開き、`resolutions` 以下の `"lodash": "^?.?.?"` となっている項目すべてを `"lodash": "^4.17.21"` にしてしまう。  
-保存後に `npm install` を行うと再構成される。
+> [!NOTE]
+> 2024/3 :  
+> `gulp@3.9.1` のバージョンアップに伴うエラーと、クリティカルな脆弱性として `lodash` の問題が発生します。
+> 正しい回避方法ではないかもしれませんが、行った対処のメモを残してきます。
+> 
+> - gulpのエラー問題:
+>     ```
+>     [17:48:43] Requiring external module @babel/register
+>     fs.js:35
+>     } = primordials;
+>         ^
+>     
+>     ReferenceError: primordials is not defined
+>         at fs.js:35:5
+>     ```
+>     * 原因:  
+>     `graceful-fs` は、Nodeのバージョンに依存しており、gulp 3.9.x に対応したものが利用されていない。
+> 
+>     * 回避策:  
+>     `graceful-fs` のバージョンを強制する。  
+>     install コマンド後に生成される `package-lock.json` をエディタで開き、`resolutions` 以下の `"graceful-fs": "^?.?.?"` となっている項目すべてを `"graceful-fs": "^4.2.10"` にしてしまう。  
+>     保存後に `npm install` を行うと再構成される。
+>   
+>   
+> - lodashの脆弱性問題:
+>     * 原因:  
+>     バージョンが古すぎてクリティカルな脆弱性を抱えている。
+> 
+>     * 回避策:  
+>     install コマンド後に生成される `package-lock.json` をエディタで開き、`resolutions` 以下の `"lodash": "^?.?.?"` となっている項目すべてを `"lodash": "^4.17.21"` にしてしまう。  
+>     保存後に `npm install` を行うと再構成される。
 
 
 ## ビルド
@@ -63,14 +66,16 @@ npm run release
 ```
 
 このコマンドを実行しているオペレーティング システムのパッケージ化プロセスが開始されます。配布の準備ができたファイルが `releases` ディレクトリに出力されます。  
-(訳者注: `arduexec` フォルダに構築されます。 `releases` フォルダは空のままでした。原因調査中)
+> [!IMPORTANT]
+> 訳者注: `arduexec` フォルダに構築されます。 `releases` フォルダは空のままでした。原因調査中
 
-2024/3 追記:  
-開発ビルドを追加しています。メニューに「開発」が追加されて、いくつか項目が増えます。
-```
-cd package/electron
-npm run develop
-```
+> [!NOTE]
+> 2024/3 追記:  
+> 開発ビルドを追加しています。メニューに「開発」が追加されて、いくつか項目が増えます。
+> ```
+> cd package/electron
+> npm run develop
+> ```
 
 Windowsインストーラーは Windows上で実行している場合にのみ作成できます。これは Linux および OSX にも当てはまります。したがって、3つのインストーラーをすべて生成するには、3つのオペレーティング システムすべてが必要です。
 
