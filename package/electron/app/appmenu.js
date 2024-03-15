@@ -411,7 +411,7 @@ var getDevMenuData = function() {
             }, {
                 label: 'Blockly Demos',
                 click: function() {
-                    shell.openExternal('http://localhost:8000/blockly/demos/');
+                    shell.openExternal('http://localhost:8000/blockly/demos/index.html');
                 } 
             }, {
                 label: 'Blockly Playground',
