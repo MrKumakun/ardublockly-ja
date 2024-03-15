@@ -408,6 +408,23 @@ var getDevMenuData = function() {
                 }
             }, {
                 type: 'separator'
+            }, {
+                label: 'Blockly Demos',
+                click: function() {
+                    shell.openExternal('http://localhost:8000/blockly/demos/');
+                } 
+            }, {
+                label: 'Blockly Playground',
+                click: function() {
+                    shell.openExternal('http://localhost:8000/blockly/tests/playground.html');
+                } 
+            }, {
+                label: 'Blockly Multi playground',
+                click: function() {
+                    shell.openExternal('http://localhost:8000/blockly/tests/multi_playground.html');
+                } 
+            }, {
+                type: 'separator'
             },  {
                 label: 'Test menu item',
                 click: testFunction
