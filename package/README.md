@@ -1,18 +1,18 @@
 # Ardublockly package
-This package folder contains three components required to build and package the Ardublockly desktop application:
+このパッケージ フォルダーには、Ardublockly デスクトップ アプリケーションをビルドしてパッケージ化するために必要な 3 つのコンポーネントが含まれています :
 
-* The [Electron][1] project to use Ardublockly as a desktop application
-* Python scripts required to build and package Ardublockly into a standalone executable.
-* Git submodule that contains the documentation (stored in the Ardublockly GitHub Wiki)
+* Ardublocklyをデスクトップアプリケーションとして使用するための[Electron][1]プロジェクト
+* Ardublocklyをビルドしてスタンドアロンの実行可能ファイルにパッケージ化するために必要なPythonスクリプト
+* ドキュメントを含むGitサブモジュール (Ardublockly GitHub Wiki に保存)
  
-The full build instruction can be found in the Ardublockly GitHub Wiki article [Building-Ardublockly][2].
+完全なビルド手順は、Ardublockly GitHub Wiki の記事 [Building-Ardublockly][2] にあります。  
 
-The build output can be distributed without any dependencies other than having the Arduino IDE.
+ビルド出力は、Arduino IDE を持っていること以外に依存関係なしで配布できます。
 
-## Download the packaged Ardublockly
-The stable binaries for Windows, Linux, and Mac OS X are hosted in GitHub as part of the [repository releases][1].
+## パッケージ化された Ardublockly をダウンロードする
+Windows、Linux、および Mac OS X の安定したバイナリは、[リポジトリ リリース][1] の一部として GitHub でホストされています。  
 
-Development builds are triggered in the CI build servers on each git commit and are hosted in the following links:
+開発ビルドは、git コミットごとに CI ビルド サーバーでトリガーされ、次のリンクでホストされます。
 
 | Linux build         | Windows build       | Mac OS X build       |
 |:-------------------:|:-------------------:|:--------------------:|
