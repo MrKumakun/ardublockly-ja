@@ -558,8 +558,8 @@ Blockly.Msg.TEXT_ISEMPTY_TOOLTIP = 'Returns true if the provided text is empty.'
 
 /// url - Information about finding a character in a piece of text.
 Blockly.Msg.TEXT_INDEXOF_HELPURL = 'https://github.com/google/blockly/wiki/Text#finding-text';
-/// tooltip - See [https://github.com/google/blockly/wiki/Text#finding-text https://github.com/google/blockly/wiki/Text#finding-text].
-Blockly.Msg.TEXT_INDEXOF_TOOLTIP = 'Returns the index of the first/last occurrence of the first text in the second text. Returns 0 if text is not found.';
+/// tooltip - %1 will be replaced by either the number 0 or -1 depending on the indexing mode. See [https://github.com/google/blockly/wiki/Text#finding-text https://github.com/google/blockly/wiki/Text#finding-text].
+Blockly.Msg.TEXT_INDEXOF_TOOLTIP = 'Returns the index of the first/last occurrence of the first text in the second text. Returns %1 if text is not found.';
 /// block text - Title of blocks allowing users to find text.  See
 /// [https://github.com/google/blockly/wiki/Text#finding-text
 /// https://github.com/google/blockly/wiki/Text#finding-text].
@@ -820,10 +820,10 @@ Blockly.Msg.LISTS_INDEX_OF_FIRST = 'find first occurrence of item';
 /// https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list].
 /// [[File:Blockly-list-find.png]]
 Blockly.Msg.LISTS_INDEX_OF_LAST = 'find last occurrence of item';
-/// dropdown - See [https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list
+/// tooltip - %1 will be replaced by either the number 0 or -1 depending on the indexing mode.  See [https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list
 /// https://github.com/google/blockly/wiki/Lists#finding-items-in-a-list].
 /// [[File:Blockly-list-find.png]]
-Blockly.Msg.LISTS_INDEX_OF_TOOLTIP = 'Returns the index of the first/last occurrence of the item in the list. Returns 0 if item is not found.';
+Blockly.Msg.LISTS_INDEX_OF_TOOLTIP = 'Returns the index of the first/last occurrence of the item in the list. Returns %1 if item is not found.';
 
 Blockly.Msg.LISTS_GET_INDEX_HELPURL = Blockly.Msg.LISTS_INDEX_OF_HELPURL;
 /// dropdown - Indicates that the user wishes to
@@ -868,37 +868,28 @@ Blockly.Msg.LISTS_GET_INDEX_RANDOM = 'random';
 /// [[File:Blockly-list-get-item.png]]
 Blockly.Msg.LISTS_GET_INDEX_TAIL = '';
 Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST = Blockly.Msg.LISTS_INLIST;
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM_START = 'Returns the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM_END = 'Returns the item at the specified position in a list. #1 is the last item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+/// tooltip - Indicates the ordinal number that the first item in a list is referenced by.  %1 will be replaced by either "#0" or "#1" depending on the indexing mode.
+Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP = '%1 is the first item.';
+/// tooltip - Indicates the ordinal number that the last item in a list is referenced by.  %1 will be replaced by either "#0" or "#1" depending on the indexing mode.
+Blockly.Msg.LISTS_INDEX_FROM_END_TOOLTIP = '%1 is the last item.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM = 'Returns the item at the specified position in a list.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FIRST = 'Returns the first item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_LAST = 'Returns the last item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item
-/// https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for more information.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_RANDOM = 'Returns a random item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item]
-/// (for remove and return) and
-/// [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from start'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM_START = 'Removes and returns the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from end'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM_END = 'Removes and returns the item at the specified position in a list. #1 is the last item.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '#' or '# from end'.
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM = 'Removes and returns the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'first'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FIRST = 'Removes and returns the first item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'last'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_LAST = 'Removes and returns the last item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'random'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_RANDOM = 'Removes and returns a random item in a list.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from start'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM_START = 'Removes the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '# from end'.
-Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM_END = 'Removes the item at the specified position in a list. #1 is the last item.';
+/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for '#' or '# from end'.
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM = 'Removes the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'first'.
 Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FIRST = 'Removes the first item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-and-removing-an-item] (for remove and return) and [https://github.com/google/blockly/wiki/Lists#getting-a-single-item] for 'last'.
@@ -920,9 +911,7 @@ Blockly.Msg.LISTS_SET_INDEX_INSERT = 'insert at';
 /// [[File:Blockly-in-list-set-insert.png]]
 Blockly.Msg.LISTS_SET_INDEX_INPUT_TO = 'as';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM_START = 'Sets the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM_END = 'Sets the item at the specified position in a list. #1 is the last item.';
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM = 'Sets the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
 Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FIRST = 'Sets the first item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
@@ -930,9 +919,7 @@ Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_LAST = 'Sets the last item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "set" block).
 Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_RANDOM = 'Sets a random item in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM_START = 'Inserts the item at the specified position in a list. #1 is the first item.';
-/// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
-Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM_END = 'Inserts the item at the specified position in a list. #1 is the last item.';
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM = 'Inserts the item at the specified position in a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
 Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FIRST = 'Inserts the item at the start of a list.';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#getting-a-single-item} (even though the page describes the "get" block, the idea is the same for the "insert" block).
@@ -988,7 +975,7 @@ Blockly.Msg.LISTS_GET_SUBLIST_TOOLTIP = 'Creates a copy of the specified portion
 
 /// url - Information describing sorting a list.
 Blockly.Msg.LISTS_SORT_HELPURL = 'https://github.com/google/blockly/wiki/Lists#sorting-a-list';
-/// Sort as type %1 (numeric or alphabetic) in order %2 (ascending or descending) a list of items %3.
+/// Sort as type %1 (numeric or alphabetic) in order %2 (ascending or descending) a list of items %3.\n{{Identical|Sort}}
 Blockly.Msg.LISTS_SORT_TITLE = 'sort %1 %2 %3';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#sorting-a-list].
 Blockly.Msg.LISTS_SORT_TOOLTIP = 'Sort a copy of a list.';
@@ -1133,13 +1120,13 @@ Blockly.Msg.PROCEDURES_IFRETURN_HELPURL = 'http://c2.com/cgi/wiki?GuardClause';
 Blockly.Msg.PROCEDURES_IFRETURN_WARNING = 'Warning: This block may be used only within a function definition.';
 
 // Interpput Blocks.
-///
+/// Attach Interrupt
 Blockly.Msg.INTERRUPTS_ATTACH_TITLE = 'Attach Interrupt';
-///
+/// Detach Interrupt
 Blockly.Msg.INTERRUPTS_DETACH_TITLE = 'Detach Interrupt';
-///
+/// Enable Interrupt
 Blockly.Msg.INTERRUPTS_TITLE = 'Enable Interrupt';
-///
+/// Disable Interrupt
 Blockly.Msg.INTERRUPTS_NO_TITLE = 'Disable Interrupt';
 /// url - Information about 
 Blockly.Msg.INTERRUPTS_ATTACH_HELPURL = 'https://www.arduino.cc/en/Reference/AttachInterrupt';

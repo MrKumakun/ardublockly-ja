@@ -450,6 +450,7 @@ Blockly.Toolbox.TreeControl.prototype.enterDocument = function() {
         this.handleTouchEvent_);
   }
 };
+
 /**
  * Handles touch events.
  * @param {!goog.events.BrowserEvent} e The browser event.

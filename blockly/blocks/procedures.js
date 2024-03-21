@@ -249,16 +249,6 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     }
   },
   /**
-   * Dispose of any callers.
-   * @this Blockly.Block
-   */
-  dispose: function() {
-    var name = this.getFieldValue('NAME');
-    Blockly.Procedures.disposeCallers(name, this.workspace);
-    // Call parent's destructor.
-    this.constructor.prototype.dispose.apply(this, arguments);
-  },
-  /**
    * Return the signature of this procedure definition.
    * @return {!Array} Tuple containing three elements:
    *     - the name of the defined procedure,
@@ -737,6 +727,72 @@ Blockly.Blocks['procedures_callnoreturn'] = {
     }
   },
   /**
+   * Procedure calls cannot exist without the corresponding procedure
+   * definition.  Enforce this link whenever an event is fired.
+   * @this Blockly.Block
+   */
+  onchange: function(event) {
+    if (!this.workspace || this.workspace.isFlyout) {
+      // Block is deleted or is in a flyout.
+      return;
+    }
+    if (event.type == Blockly.Events.CREATE &&
+        event.ids.indexOf(this.id) != -1) {
+      // Look for the case where a procedure call was created (usually through
+      // paste) and there is no matching definition.  In this case, create
+      // an empty definition block with the correct signature.
+      var name = this.getProcedureCall();
+      var def = Blockly.Procedures.getDefinition(name, this.workspace);
+      if (def && (def.type != this.defType_ ||
+          JSON.stringify(def.arguments_) != JSON.stringify(this.arguments_))) {
+        // The signatures don't match.
+        def = null;
+      }
+      if (!def) {
+        Blockly.Events.setGroup(event.group);
+        /**
+         * Create matching definition block.
+         * <xml>
+         *   <block type="procedures_defreturn" x="10" y="20">
+         *     <mutation name="test">
+         *       <arg name="x"></arg>
+         *     </mutation>
+         *     <field name="NAME">test</field>
+         *   </block>
+         * </xml>
+         */
+        var xml = goog.dom.createDom('xml');
+        var block = goog.dom.createDom('block');
+        block.setAttribute('type', this.defType_);
+        var xy = this.getRelativeToSurfaceXY();
+        var x = xy.x + Blockly.SNAP_RADIUS * (this.RTL ? -1 : 1);
+        var y = xy.y + Blockly.SNAP_RADIUS * 2;
+        block.setAttribute('x', x);
+        block.setAttribute('y', y);
+        var mutation = this.mutationToDom();
+        block.appendChild(mutation);
+        var field = goog.dom.createDom('field');
+        field.setAttribute('name', 'NAME');
+        field.appendChild(document.createTextNode(this.getProcedureCall()));
+        block.appendChild(field);
+        xml.appendChild(block);
+        Blockly.Xml.domToWorkspace(xml, this.workspace);
+        Blockly.Events.setGroup(false);
+      }
+    } else if (event.type == Blockly.Events.DELETE) {
+      // Look for the case where a procedure definition has been deleted,
+      // leaving this block (a procedure call) orphaned.  In this case, delete
+      // the orphan.
+      var name = this.getProcedureCall();
+      var def = Blockly.Procedures.getDefinition(name, this.workspace);
+      if (!def) {
+        Blockly.Events.setGroup(event.group);
+        this.dispose(true, false);
+        Blockly.Events.setGroup(false);
+      }
+    }
+  },
+  /**
    * Add menu option to find the definition block for this call.
    * @param {!Array} options List of menu options to add to.
    * @this Blockly.Block
@@ -751,7 +807,8 @@ Blockly.Blocks['procedures_callnoreturn'] = {
       def && def.select();
     };
     options.push(option);
-  }
+  },
+  defType_: 'procedures_defnoreturn'
 };
 
 Blockly.Blocks['procedures_callreturn'] = {
@@ -778,8 +835,10 @@ Blockly.Blocks['procedures_callreturn'] = {
   mutationToDom: Blockly.Blocks['procedures_callnoreturn'].mutationToDom,
   domToMutation: Blockly.Blocks['procedures_callnoreturn'].domToMutation,
   renameVar: Blockly.Blocks['procedures_callnoreturn'].renameVar,
+  onchange: Blockly.Blocks['procedures_callnoreturn'].onchange,
   customContextMenu:
       Blockly.Blocks['procedures_callnoreturn'].customContextMenu,
+  defType_: 'procedures_defreturn',
   /** @return {!string} Return value type from the function definition block. */
   getBlockType: function() {
     var defBlock = Blockly.Procedures.getDefinition(this.getProcedureCall(),
