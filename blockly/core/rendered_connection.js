@@ -234,8 +234,8 @@ Blockly.RenderedConnection.prototype.unhideAll = function() {
       // Show all connections of this block.
       connections = block.getConnections_(true);
     }
-    for (var i = 0; i < connections.length; i++) {
-      renderList.push.apply(renderList, connections[i].unhideAll());
+    for (var c = 0; c < connections.length; c++) {
+      renderList.push.apply(renderList, connections[c].unhideAll());
     }
     if (!renderList.length) {
       // Leaf block.
@@ -275,17 +275,17 @@ Blockly.RenderedConnection.prototype.hideAll = function() {
   this.setHidden(true);
   if (this.targetConnection) {
     var blocks = this.targetBlock().getDescendants();
-    for (var i = 0; i < blocks.length; i++) {
-      var block = blocks[i];
+    for (var b = 0; b < blocks.length; b++) {
+      var block = blocks[b];
       // Hide all connections of all children.
       var connections = block.getConnections_(true);
-      for (var j = 0; j < connections.length; j++) {
-        connections[j].setHidden(true);
+      for (var c = 0; c < connections.length; c++) {
+        connections[c].setHidden(true);
       }
       // Close all bubbles of all children.
       var icons = block.getIcons();
-      for (var j = 0; j < icons.length; j++) {
-        icons[j].setVisible(false);
+      for (var i = 0; i < icons.length; i++) {
+        icons[i].setVisible(false);
       }
     }
   }
@@ -337,7 +337,7 @@ Blockly.RenderedConnection.prototype.respawnShadow_ = function() {
   // Respawn the shadow block if there is one.
   var shadow = this.getShadowDom();
   if (parentBlock.workspace && shadow && Blockly.Events.recordUndo) {
-    Blockly.RenderedConnection.superClass_.respawnShadow_.call(this);
+        Blockly.RenderedConnection.superClass_.respawnShadow_.call(this);
     var blockShadow = this.targetBlock();
     if (!blockShadow) {
       throw 'Couldn\'t respawn the shadow block that should exist here.';

@@ -154,14 +154,7 @@ Blockly.DRAG_NONE = 0;
 Blockly.DRAG_STICKY = 1;
 
 /**
- * ENUM for inside the non-sticky DRAG_RADIUS, for differentiating between
- * clicks and drags.
- * @const
- */
-Blockly.DRAG_BEGIN = 1;
-
-/**
- * ENUM for freely draggable (outside the DRAG_RADIUS, if one applies).
+ * ENUM for freely draggable.
  * @const
  */
 Blockly.DRAG_FREE = 2;

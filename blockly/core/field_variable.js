@@ -50,6 +50,35 @@ Blockly.FieldVariable = function(varname, opt_validator) {
 goog.inherits(Blockly.FieldVariable, Blockly.FieldDropdown);
 
 /**
+ * Sets a new change handler for angle field.
+ * @param {Function} handler New change handler, or null.
+ */
+Blockly.FieldVariable.prototype.setValidator = function(handler) {
+  var wrappedHandler;
+  if (handler) {
+    // Wrap the user's change handler together with the variable rename handler.
+    wrappedHandler = function(value) {
+      var v1 = handler.call(this, value);
+      if (v1 === null) {
+        var v2 = v1;
+      } else {
+        if (v1 === undefined) {
+          v1 = value;
+        }
+        var v2 = Blockly.FieldVariable.dropdownChange.call(this, v1);
+        if (v2 === undefined) {
+          v2 = v1;
+        }
+      }
+      return v2 === value ? undefined : v2;
+    };
+  } else {
+    wrappedHandler = Blockly.FieldVariable.dropdownChange;
+  }
+  Blockly.FieldVariable.superClass_.setValidator.call(this, wrappedHandler);
+};
+
+/**
  * Install this dropdown on a block.
  */
 Blockly.FieldVariable.prototype.init = function() {
@@ -114,8 +143,8 @@ Blockly.FieldVariable.prototype.dropdownCreate = function() {
   // Variables are not language-specific, use the name as both the user-facing
   // text and the internal representation.
   var options = [];
-  for (var i = 0; i < variableList.length; i++) {
-    options[i] = [variableList[i], variableList[i]];
+  for (var x = 0; x < variableList.length; x++) {
+    options[x] = [variableList[x], variableList[x]];
   }
   return options;
 };
@@ -130,7 +159,7 @@ Blockly.FieldVariable.prototype.dropdownCreate = function() {
  *     handled (rename), or undefined if an existing variable was chosen.
  * @this {!Blockly.FieldVariable}
  */
-Blockly.FieldVariable.classValidator = function(text) {
+Blockly.FieldVariable.dropdownChange = function(text) {
   function promptName(promptText, defaultText, callback) {
     Blockly.hideChaff();
     var newVar = Blockly.prompt(promptText, defaultText, function(newVar) {
@@ -146,12 +175,11 @@ Blockly.FieldVariable.classValidator = function(text) {
       }
       callback(newVar);
     });
-    return newVar;
   }
   var workspace = this.sourceBlock_.workspace;
   if (text == Blockly.Msg.RENAME_VARIABLE) {
     var oldVar = this.getText();
-    text = promptName(Blockly.Msg.RENAME_VARIABLE_TITLE.replace('%1', oldVar),
+    promptName(Blockly.Msg.RENAME_VARIABLE_TITLE.replace('%1', oldVar),
                oldVar, function(text) {
       if (text) {
         Blockly.Variables.renameVariable(oldVar, text, workspace);

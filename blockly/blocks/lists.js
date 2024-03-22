@@ -301,9 +301,7 @@ Blockly.Blocks['lists_indexOf'] = {
     this.appendValueInput('FIND')
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'END');
     this.setInputsInline(true);
-    var tooltip = Blockly.Msg.LISTS_INDEX_OF_TOOLTIP
-        .replace('%1', Blockly.Blocks.ONE_BASED_INDEXING ? '0' : '-1');
-    this.setTooltip(tooltip);
+    this.setTooltip(Blockly.Msg.LISTS_INDEX_OF_TOOLTIP);
   }
 };
 
@@ -346,58 +344,9 @@ Blockly.Blocks['lists_getIndex'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     this.setTooltip(function() {
-      var mode = thisBlock.getFieldValue('MODE');
-      var where = thisBlock.getFieldValue('WHERE');
-      var tooltip = '';
-      switch (mode + ' ' + where) {
-        case 'GET FROM_START':
-        case 'GET FROM_END':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM;
-          break;
-        case 'GET FIRST':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FIRST;
-          break;
-        case 'GET LAST':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_LAST;
-          break;
-        case 'GET RANDOM':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_RANDOM;
-          break;
-        case 'GET_REMOVE FROM_START':
-        case 'GET_REMOVE FROM_END':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM;
-          break;
-        case 'GET_REMOVE FIRST':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FIRST;
-          break;
-        case 'GET_REMOVE LAST':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_LAST;
-          break;
-        case 'GET_REMOVE RANDOM':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_RANDOM;
-          break;
-        case 'REMOVE FROM_START':
-        case 'REMOVE FROM_END':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FROM;
-          break;
-        case 'REMOVE FIRST':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_FIRST;
-          break;
-        case 'REMOVE LAST':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_LAST;
-          break;
-        case 'REMOVE RANDOM':
-          tooltip = Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_REMOVE_RANDOM;
-          break;
-      }
-      if (where == 'FROM_START') {
-        tooltip += '  ' + Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP
-            .replace('%1', Blockly.Blocks.ONE_BASED_INDEXING ? '#1' : '#0');
-      } else if (where == 'FROM_END') {
-        tooltip += '  ' + Blockly.Msg.LISTS_INDEX_FROM_END_TOOLTIP
-            .replace('%1', '#1');  // The end is always 1-indexed.
-      }
-      return tooltip;
+      var combo = thisBlock.getFieldValue('MODE') + '_' +
+          thisBlock.getFieldValue('WHERE');
+      return Blockly.Msg['LISTS_GET_INDEX_TOOLTIP_' + combo];
     });
   },
   /**
@@ -522,45 +471,9 @@ Blockly.Blocks['lists_setIndex'] = {
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
     this.setTooltip(function() {
-      var mode = thisBlock.getFieldValue('MODE');
-      var where = thisBlock.getFieldValue('WHERE');
-      var tooltip = '';
-      switch (mode + ' ' + where) {
-        case 'SET FROM_START':
-        case 'SET FROM_END':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FROM;
-          break;
-        case 'SET FIRST':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_FIRST;
-          break;
-        case 'SET LAST':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_LAST;
-          break;
-        case 'SET RANDOM':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_SET_RANDOM;
-          break;
-        case 'INSERT FROM_START':
-        case 'INSERT FROM_END':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FROM;
-          break;
-        case 'INSERT FIRST':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_FIRST;
-          break;
-        case 'INSERT LAST':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_LAST;
-          break;
-        case 'INSERT RANDOM':
-          tooltip = Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT_RANDOM;
-          break;
-      }
-      if (where == 'FROM_START') {
-        tooltip += '  ' + Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP
-            .replace('%1', Blockly.Blocks.ONE_BASED_INDEXING ? '#1' : '#0');
-      } else if (where == 'FROM_END') {
-        tooltip += '  ' + Blockly.Msg.LISTS_INDEX_FROM_END_TOOLTIP
-            .replace('%1', '#1');  // The end is always 1-indexed.
-      }
-      return tooltip;
+      var combo = thisBlock.getFieldValue('MODE') + '_' +
+          thisBlock.getFieldValue('WHERE');
+      return Blockly.Msg['LISTS_SET_INDEX_TOOLTIP_' + combo];
     });
   },
   /**
@@ -707,13 +620,11 @@ Blockly.Blocks['lists_getSublist'] = {
     var menu = new Blockly.FieldDropdown(this['WHERE_OPTIONS_' + n],
         function(value) {
       var newAt = (value == 'FROM_START') || (value == 'FROM_END');
-          // The 'isAt' variable is available due to this function being a
-          // closure.
+      // The 'isAt' variable is available due to this function being a closure.
       if (newAt != isAt) {
         var block = this.sourceBlock_;
         block.updateAt_(n, newAt);
-            // This menu has been destroyed and replaced.
-            // Update the replacement.
+        // This menu has been destroyed and replaced.  Update the replacement.
         block.setFieldValue(value, 'WHERE' + n);
         return null;
       }

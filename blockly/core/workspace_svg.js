@@ -84,12 +84,9 @@ Blockly.WorkspaceSvg.prototype.isFlyout = false;
 
 /**
  * Is this workspace currently being dragged around?
- * DRAG_NONE - No drag operation.
- * DRAG_BEGIN - Still inside the initial DRAG_RADIUS.
- * DRAG_FREE - Workspace has been dragged further than DRAG_RADIUS.
- * @private
+ * @type {boolean}
  */
-Blockly.WorkspaceSvg.prototype.dragMode_ = Blockly.DRAG_NONE;
+Blockly.WorkspaceSvg.prototype.isScrolling = false;
 
 /**
  * Current horizontal scrolling offset.
@@ -538,54 +535,51 @@ Blockly.WorkspaceSvg.prototype.paste = function(xmlBlock) {
   }
   Blockly.terminateDrag_();  // Dragging while pasting?  No.
   Blockly.Events.disable();
-  try {
-    var block = Blockly.Xml.domToBlock(xmlBlock, this);
-    // Move the duplicate to original position.
-    var blockX = parseInt(xmlBlock.getAttribute('x'), 10);
-    var blockY = parseInt(xmlBlock.getAttribute('y'), 10);
-    if (!isNaN(blockX) && !isNaN(blockY)) {
-      if (this.RTL) {
-        blockX = -blockX;
+  var block = Blockly.Xml.domToBlock(xmlBlock, this);
+  // Move the duplicate to original position.
+  var blockX = parseInt(xmlBlock.getAttribute('x'), 10);
+  var blockY = parseInt(xmlBlock.getAttribute('y'), 10);
+  if (!isNaN(blockX) && !isNaN(blockY)) {
+    if (this.RTL) {
+      blockX = -blockX;
+    }
+    // Offset block until not clobbering another block and not in connection
+    // distance with neighbouring blocks.
+    do {
+      var collide = false;
+      var allBlocks = this.getAllBlocks();
+      for (var i = 0, otherBlock; otherBlock = allBlocks[i]; i++) {
+        var otherXY = otherBlock.getRelativeToSurfaceXY();
+        if (Math.abs(blockX - otherXY.x) <= 1 &&
+            Math.abs(blockY - otherXY.y) <= 1) {
+          collide = true;
+          break;
+        }
       }
-      // Offset block until not clobbering another block and not in connection
-      // distance with neighbouring blocks.
-      do {
-        var collide = false;
-        var allBlocks = this.getAllBlocks();
-        for (var i = 0, otherBlock; otherBlock = allBlocks[i]; i++) {
-          var otherXY = otherBlock.getRelativeToSurfaceXY();
-          if (Math.abs(blockX - otherXY.x) <= 1 &&
-              Math.abs(blockY - otherXY.y) <= 1) {
+      if (!collide) {
+        // Check for blocks in snap range to any of its connections.
+        var connections = block.getConnections_(false);
+        for (var i = 0, connection; connection = connections[i]; i++) {
+          var neighbour = connection.closest(Blockly.SNAP_RADIUS,
+              new goog.math.Coordinate(blockX, blockY));
+          if (neighbour.connection) {
             collide = true;
             break;
           }
         }
-        if (!collide) {
-          // Check for blocks in snap range to any of its connections.
-          var connections = block.getConnections_(false);
-          for (var i = 0, connection; connection = connections[i]; i++) {
-            var neighbour = connection.closest(Blockly.SNAP_RADIUS,
-                new goog.math.Coordinate(blockX, blockY));
-            if (neighbour.connection) {
-              collide = true;
-              break;
-            }
-          }
+      }
+      if (collide) {
+        if (this.RTL) {
+          blockX -= Blockly.SNAP_RADIUS;
+        } else {
+          blockX += Blockly.SNAP_RADIUS;
         }
-        if (collide) {
-          if (this.RTL) {
-            blockX -= Blockly.SNAP_RADIUS;
-          } else {
-            blockX += Blockly.SNAP_RADIUS;
-          }
-          blockY += Blockly.SNAP_RADIUS * 2;
-        }
-      } while (collide);
-      block.moveBy(blockX, blockY);
-    }
-  } finally {
-    Blockly.Events.enable();
+        blockY += Blockly.SNAP_RADIUS * 2;
+      }
+    } while (collide);
+    block.moveBy(blockX, blockY);
   }
+  Blockly.Events.enable();
   if (Blockly.Events.isEnabled() && !block.isShadow()) {
     Blockly.Events.fire(new Blockly.Events.Create(block));
   }
@@ -659,7 +653,9 @@ Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
     // Right-click.
     this.showContextMenu_(e);
   } else if (this.scrollbar) {
-    this.dragMode_ = Blockly.DRAG_BEGIN;
+    // If the workspace is editable, only allow scrolling when gripping empty
+    // space.  Otherwise, allow scrolling when gripping anywhere.
+    this.isScrolling = true;
     // Record the current mouse position.
     this.startDragMouseX = e.clientX;
     this.startDragMouseY = e.clientY;
@@ -715,15 +711,6 @@ Blockly.WorkspaceSvg.prototype.moveDrag = function(e) {
 };
 
 /**
- * Is the user currently dragging a block or scrolling the workspace?
- * @return {boolean} True if currently dragging or scrolling.
- */
-Blockly.WorkspaceSvg.prototype.isDragging = function() {
-  return Blockly.dragMode_ == Blockly.DRAG_FREE ||
-      this.dragMode_ == Blockly.DRAG_FREE;
-};
-
-/**
  * Handle a mouse-wheel on SVG drawing surface.
  * @param {!Event} e Mouse wheel event.
  * @private
@@ -745,7 +732,7 @@ Blockly.WorkspaceSvg.prototype.onMouseWheel_ = function(e) {
  *   containing the blocks on the workspace.
  */
 Blockly.WorkspaceSvg.prototype.getBlocksBoundingBox = function() {
-  var topBlocks = this.getTopBlocks(false);
+  var topBlocks = this.getTopBlocks();
   // There are no blocks, return empty rectangle.
   if (!topBlocks.length) {
     return {x: 0, y: 0, width: 0, height: 0};

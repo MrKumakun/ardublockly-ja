@@ -132,7 +132,7 @@ Blockly.Generator.prototype.workspaceToCode = function(workspace) {
  * @return {string} The prefixed lines of code.
  */
 Blockly.Generator.prototype.prefixLines = function(text, prefix) {
-  return prefix + text.replace(/(?!\n$)\n/g, '\n' + prefix);
+  return prefix + text.replace(/\n(.)/g, '\n' + prefix + '$1');
 };
 
 /**
@@ -143,8 +143,8 @@ Blockly.Generator.prototype.prefixLines = function(text, prefix) {
 Blockly.Generator.prototype.allNestedComments = function(block) {
   var comments = [];
   var blocks = block.getDescendants();
-  for (var i = 0; i < blocks.length; i++) {
-    var comment = blocks[i].getCommentText();
+  for (var x = 0; x < blocks.length; x++) {
+    var comment = blocks[x].getCommentText();
     if (comment) {
       comments.push(comment);
     }
@@ -263,10 +263,10 @@ Blockly.Generator.prototype.valueToCode = function(block, name, outerOrder) {
     }
   }
   if (parensNeeded) {
-    // Technically, this should be handled on a language-by-language basis.
-    // However all known (sane) languages use parentheses for grouping.
-    code = '(' + code + ')';
-  }
+      // Technically, this should be handled on a language-by-language basis.
+      // However all known (sane) languages use parentheses for grouping.
+      code = '(' + code + ')';
+    }
   return code;
 };
 

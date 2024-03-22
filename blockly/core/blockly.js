@@ -114,9 +114,9 @@ Blockly.clipboardSource_ = null;
 
 /**
  * Is the mouse dragging a block?
- * DRAG_NONE - No drag operation.
- * DRAG_STICKY - Still inside the sticky DRAG_RADIUS.
- * DRAG_FREE - Freely draggable.
+ * 0 - No drag operation.
+ * 1 - Still inside the sticky DRAG_RADIUS.
+ * 2 - Freely draggable.
  * @private
  */
 Blockly.dragMode_ = Blockly.DRAG_NONE;
@@ -221,7 +221,7 @@ Blockly.svgResize = function(workspace) {
 Blockly.onMouseUp_ = function(e) {
   var workspace = Blockly.getMainWorkspace();
   Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
-  workspace.dragMode_ = Blockly.DRAG_NONE;
+  workspace.isScrolling = false;
   // Unbind the touch event if it exists.
   if (Blockly.onTouchUpWrapper_) {
     Blockly.unbindEvent_(Blockly.onTouchUpWrapper_);
@@ -243,7 +243,7 @@ Blockly.onMouseMove_ = function(e) {
     return;  // Multi-touch gestures won't have e.clientX.
   }
   var workspace = Blockly.getMainWorkspace();
-  if (workspace.dragMode_ != Blockly.DRAG_NONE) {
+  if (workspace.isScrolling) {
     var dx = e.clientX - workspace.startDragMouseX;
     var dy = e.clientY - workspace.startDragMouseY;
     var metrics = workspace.startDragMetrics;
@@ -262,7 +262,6 @@ Blockly.onMouseMove_ = function(e) {
     // Cancel the long-press if the drag has moved too far.
     if (Math.sqrt(dx * dx + dy * dy) > Blockly.DRAG_RADIUS) {
       Blockly.longStop_();
-      workspace.dragMode_ = Blockly.DRAG_FREE;
     }
     e.stopPropagation();
     e.preventDefault();
@@ -309,9 +308,7 @@ Blockly.onKeyDown_ = function(e) {
     if (e.keyCode == 86) {
       // 'v' for paste.
       if (Blockly.clipboardXml_) {
-        Blockly.Events.setGroup(true);
         Blockly.clipboardSource_.paste(Blockly.clipboardXml_);
-        Blockly.Events.setGroup(false);
       }
     } else if (e.keyCode == 90) {
       // 'z' for undo 'Z' is for redo.

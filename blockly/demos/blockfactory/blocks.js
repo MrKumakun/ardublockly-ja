@@ -505,13 +505,13 @@ Blockly.Blocks['type_group'] = {
     // Parse XML to restore the group of types.
     this.typeCount_ = parseInt(container.getAttribute('types'), 10);
     this.updateShape_();
-    for (var i = 0; i < this.typeCount_; i++) {
-      this.removeInput('TYPE' + i);
+    for (var x = 0; x < this.typeCount_; x++) {
+      this.removeInput('TYPE' + x);
     }
-    for (var i = 0; i < this.typeCount_; i++) {
-      var input = this.appendValueInput('TYPE' + i)
+    for (var x = 0; x < this.typeCount_; x++) {
+      var input = this.appendValueInput('TYPE' + x)
                       .setCheck('Type');
-      if (i == 0) {
+      if (x == 0) {
         input.appendField('any of');
       }
     }

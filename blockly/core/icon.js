@@ -124,7 +124,7 @@ Blockly.Icon.prototype.isVisible = function() {
  * @private
  */
 Blockly.Icon.prototype.iconClick_ = function(e) {
-  if (this.block_.workspace.isDragging()) {
+  if (Blockly.dragMode_ == Blockly.DRAG_FREE) {
     // Drag operation is concluding.  Don't open the editor.
     return;
   }
