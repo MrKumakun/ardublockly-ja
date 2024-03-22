@@ -12,7 +12,7 @@ var Ardublockly = Ardublockly || {};
 Ardublockly.TOOLBOX_XML =
 '<xml>' +
 '  <sep></sep>' +
-'  <category id="catLogic" name="Logic">' +
+'  <category id="catLogic" name="Logic" caticon="icon-cat icon-cat-logic">' +
 '    <block type="controls_if"></block>' +
 '    <block type="logic_compare"></block>' +
 '    <block type="logic_operation"></block>' +
@@ -22,7 +22,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="logic_ternary"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catLoops" name="Loops">' +
+'  <category id="catLoops" name="Loops" caticon="icon-cat icon-cat-loop">' +
 '    <block type="controls_repeat_ext">' +
 '      <value name="TIMES">' +
 '        <block type="math_number">' +
@@ -51,7 +51,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="controls_flow_statements"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catMath" name="Math">' +
+'  <category id="catMath" name="Math"  caticon="icon-cat icon-cat-math">' +
 '    <block type="math_number"></block>' +
 '    <block type="math_arithmetic"></block>' +
 '    <block type="math_single"></block>' +
@@ -96,7 +96,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="base_map"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catText" name="Text">' +
+'  <category id="catText" name="Text" caticon="icon-cat icon-cat-text">' +
 '    <block type="text"></block>' +
 '    <block type="text_join"></block>' +
 '    <block type="text_append">' +
@@ -110,7 +110,7 @@ Ardublockly.TOOLBOX_XML =
 //'    <!--block type="text_print"></block Part of the serial comms -->' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catVariables" name="Variables">' +
+'  <category id="catVariables" name="Variables" caticon="icon-cat icon-cat-variables">' +
 '    <block type="variables_get"></block>' +
 '    <block type="variables_set"></block>' +
 '    <block type="variables_set">' +
@@ -121,9 +121,9 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="variables_set_type"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catFunctions" name="Functions" custom="PROCEDURE"></category>' +
+'  <category id="catFunctions" name="Functions" custom="PROCEDURE" caticon="icon-cat icon-cat-func"></category>' +
 '  <sep></sep>' +
-'  <category id="catInputOutput" name="Input/Output">' +
+'  <category id="catInputOutput" name="Input/Output" caticon="icon-cat icon-cat-io">' +
 '    <block type="io_digitalwrite">' +
 '      <value name="STATE">' +
 '        <block type="io_highlow"></block>' +
@@ -155,7 +155,7 @@ Ardublockly.TOOLBOX_XML =
 '    </block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catTime" name="Time">' +
+'  <category id="catTime" name="Time" caticon="icon-cat icon-cat-time">' +
 '    <block type="time_delay">' +
 '      <value name="DELAY_TIME_MILI">' +
 '        <block type="math_number">' +
@@ -175,7 +175,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="infinite_loop"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catAudio" name="Audio">' +
+'  <category id="catAudio" name="Audio" caticon="icon-cat icon-cat-audio">' +
 '    <block type="io_tone">' +
 '      <field name="TONEPIN">0</field>' +
 '      <value name="FREQUENCY">' +
@@ -187,7 +187,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="io_notone"></block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catMotors" name="Motors">' +
+'  <category id="catMotors" name="Motors" caticon="icon-cat icon-cat-motors">' +
 '    <block type="servo_write">' +
 '      <value name="SERVO_ANGLE">' +
 '        <block type="math_number">' +
@@ -220,7 +220,7 @@ Ardublockly.TOOLBOX_XML =
 '    </block>' +
 '  </category>' +
 '  <sep></sep>' +
-'  <category id="catComms" name="Comms">' +
+'  <category id="catComms" name="Comms" caticon="icon-cat icon-cat-comms">' +
 '    <block type="serial_setup"></block>' +
 '    <block type="serial_print"></block>' +
 '    <block type="text_prompt_ext">' +
@@ -232,7 +232,7 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="spi_transfer"></block>' +
 '    <block type="spi_transfer_return"></block>' +
 '  </category>' +
-'  <category id="catInts" name="Ints">' +
+'  <category id="catInts" name="Ints" caticon="icon-cat icon-cat-ints">' +
 '    <block type="interrupts_attach"></block>' +
 '    <block type="interrupts_detach"></block>' +
 '    <block type="interrupts"></block>' +

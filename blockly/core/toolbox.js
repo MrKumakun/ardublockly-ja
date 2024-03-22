@@ -308,6 +308,10 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
           } else {
             childOut.setExpanded(false);
           }
+          var iconclass = childIn.getAttribute('caticon');
+          if (iconclass) {
+            childOut.setIconClass(iconclass);
+          }
           lastElement = childIn;
           break;
         case 'SEP':
