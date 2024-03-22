@@ -12,6 +12,7 @@ goog.provide('Blockly.Blocks.groove');
 
 goog.require('Blockly.Blocks');
 
+goog.require('Blockly.Msg');
 
 Blockly.Blocks.groove.HUE = 180;
 

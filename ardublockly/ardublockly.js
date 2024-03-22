@@ -630,9 +630,12 @@ Ardublockly.importExtraBlocks = function() {
         blocksJsLoad.src = '../blocks/' + catDir + '/blocks.js';
         head.appendChild(blocksJsLoad);
 
-        var blocksLangJsLoad = document.createElement('script');
+        var blocksLangJsLoad = document.createElement('script');        
+        /* TODO: 
         blocksLangJsLoad.src = '../blocks/' + catDir + '/msg/' + 'messages.js';
             //'lang/' + Ardublockly.LANG + '.js';
+        */
+        blocksLangJsLoad.src = '../blocks/' + catDir + '/msg/lang/' + 'ja.js';
         head.appendChild(blocksLangJsLoad);
 
         var blocksGeneratorJsLoad = document.createElement('script');
