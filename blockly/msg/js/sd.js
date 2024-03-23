@@ -287,6 +287,7 @@ Blockly.Msg.ME = "آئون";
 Blockly.Msg.NEW_VARIABLE = "نئون ڦرڻو";
 Blockly.Msg.NEW_VARIABLE_TITLE = "ڦرڻي جو نئون نالو:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "allow statements";  // untranslated
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "سان:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";  // untranslated

@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Jaz";
 Blockly.Msg.NEW_VARIABLE = "Nova spremenljivka...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Ime nove spremenljivke:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "dovoli korake";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "s/z:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Subroutine";

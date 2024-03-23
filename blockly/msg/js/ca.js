@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Jo";
 Blockly.Msg.NEW_VARIABLE = "Nova variable...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nou nom de variable:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "permetre declaracions";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "amb:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://ca.wikipedia.org/wiki/Procediment_%28Programació%29";

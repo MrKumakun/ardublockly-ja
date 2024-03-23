@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Мне";
 Blockly.Msg.NEW_VARIABLE = "Новая переменная…";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Имя новой переменной:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "разрешить операторы";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "с:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://ru.wikipedia.org/wiki/Функция_%28программирование%29";

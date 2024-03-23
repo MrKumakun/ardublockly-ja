@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Ja";
 Blockly.Msg.NEW_VARIABLE = "Nová premenná...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Názov novej premennej:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "povoliť príkazy";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "s:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

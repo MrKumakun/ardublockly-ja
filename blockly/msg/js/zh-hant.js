@@ -287,6 +287,7 @@ Blockly.Msg.ME = "我";
 Blockly.Msg.NEW_VARIABLE = "新變數...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "新變數名稱:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "允許語句";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "與：";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://zh.wikipedia.org/wiki/子程式";

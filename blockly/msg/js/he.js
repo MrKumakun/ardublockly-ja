@@ -287,6 +287,7 @@ Blockly.Msg.ME = "אותי";
 Blockly.Msg.NEW_VARIABLE = "משתנה חדש...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "שם המשתנה החדש:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "לאפשר פעולות";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "עם:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://he.wikipedia.org/wiki/שגרה_(תכנות)";

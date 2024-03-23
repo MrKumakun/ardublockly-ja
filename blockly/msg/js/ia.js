@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Io";
 Blockly.Msg.NEW_VARIABLE = "Nove variabile...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nomine del nove variabile:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "permitter declarationes";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "con:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";  // untranslated

@@ -287,6 +287,7 @@ Blockly.Msg.ME = "مإ";
 Blockly.Msg.NEW_VARIABLE = "متغیر تازه...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "نام متغیر تازه:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "اجازه اظهارات";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "با:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

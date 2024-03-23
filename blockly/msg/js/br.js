@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Me";
 Blockly.Msg.NEW_VARIABLE = "Argemmenn nevez...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Anv an argemmenn nevez :";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "aotren an disklêriadurioù";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "gant :";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

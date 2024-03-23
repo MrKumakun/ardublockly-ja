@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Moi";
 Blockly.Msg.NEW_VARIABLE = "Nouvelle variable…";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nouveau nom de la variable :";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "autoriser les ordres";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "avec :";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "http://fr.wikipedia.org/wiki/Proc%C3%A9dure_%28informatique%29";

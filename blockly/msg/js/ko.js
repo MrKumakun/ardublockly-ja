@@ -287,6 +287,7 @@ Blockly.Msg.ME = "나";
 Blockly.Msg.NEW_VARIABLE = "새 변수";
 Blockly.Msg.NEW_VARIABLE_TITLE = "새 변수 이름:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "서술 허가";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "사용:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

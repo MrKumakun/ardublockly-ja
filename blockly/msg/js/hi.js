@@ -287,6 +287,7 @@ Blockly.Msg.ME = "मैं";
 Blockly.Msg.NEW_VARIABLE = "नया चर...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "नए चर का नाम:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "allow statements";  // untranslated
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = ": के साथ";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

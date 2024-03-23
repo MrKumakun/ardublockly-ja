@@ -287,6 +287,7 @@ Blockly.Msg.ME = "ฉัน";
 Blockly.Msg.NEW_VARIABLE = "สร้างตัวแปร...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "ชื่อตัวแปรใหม่:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "allow statements";  // untranslated
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "ด้วย:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_(computer_science)";

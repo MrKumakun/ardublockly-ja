@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Tôi";
 Blockly.Msg.NEW_VARIABLE = "Biến mới...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Tên của biến mới:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "cho phép báo cáo";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "với:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";  // untranslated

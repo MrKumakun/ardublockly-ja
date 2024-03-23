@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Deo";
 Blockly.Msg.NEW_VARIABLE = "Variabili noa...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nòmini de sa variabili noa:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "permiti decraratzionis";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "con:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2024-03-15 13:35:57.737000",
+		"lastupdated": "2024-03-23 21:45:30.006000",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -352,7 +352,8 @@
 	"PROCEDURES_DEFNORETURN_HELPURL": "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29",
 	"PROCEDURES_DEFNORETURN_TITLE": "to",
 	"PROCEDURES_DEFNORETURN_PROCEDURE": "do something",
-	"PROCEDURES_BEFORE_PARAMS": "with:",
+	"PROCEDURES_BEFORE_PARAMS": "with:(",
+	"PROCEDURES_AFTER_PARAMS": ")",
 	"PROCEDURES_CALL_BEFORE_PARAMS": "with:",
 	"PROCEDURES_DEFNORETURN_DO": "",
 	"PROCEDURES_DEFNORETURN_TOOLTIP": "Creates a function with no output.",

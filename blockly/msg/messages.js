@@ -1059,7 +1059,11 @@ Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = 'do something';
 /// block text - This precedes the list of parameters on a function's defiition block.  See
 /// [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#voztpd this sample
 /// function with parameters].
-Blockly.Msg.PROCEDURES_BEFORE_PARAMS = 'with:';
+Blockly.Msg.PROCEDURES_BEFORE_PARAMS = 'with:(';
+/// block text - This precedes the list of parameters on a function's defiition block.  See
+/// [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#voztpd this sample
+/// function with parameters].
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ')';
 /// block text - This precedes the list of parameters on a function's caller block.  See
 /// [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#voztpd this sample
 /// function with parameters].

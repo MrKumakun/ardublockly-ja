@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Minä";
 Blockly.Msg.NEW_VARIABLE = "Uusi muuttuja...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Uuden muuttujan nimi:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "salli kommentit";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "parametrit:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://fi.wikipedia.org/wiki/Aliohjelma";

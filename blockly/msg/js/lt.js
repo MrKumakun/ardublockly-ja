@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Mane";
 Blockly.Msg.NEW_VARIABLE = "Naujas kintamasis...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Naujo kintamojo pavadinimas:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "leisti vidinius veiksmus";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "pagal:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";  // untranslated

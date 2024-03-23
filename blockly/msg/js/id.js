@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Saya";
 Blockly.Msg.NEW_VARIABLE = "Variabel baru...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nama variabel baru:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "memungkinkan pernyataan";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "dengan:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

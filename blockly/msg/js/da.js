@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Mig";
 Blockly.Msg.NEW_VARIABLE = "Ny variabel...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Navn til den nye variabel:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "tillad erklæringer";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "med:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://da.wikipedia.org/wiki/Funktion_%28programmering%29";

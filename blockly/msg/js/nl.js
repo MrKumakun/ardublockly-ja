@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Ik";
 Blockly.Msg.NEW_VARIABLE = "Nieuwe variabele...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nieuwe variabelenaam:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "statements toestaan";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "met:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://nl.wikipedia.org/wiki/Subprogramma";

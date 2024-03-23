@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Я";
 Blockly.Msg.NEW_VARIABLE = "Новая зьменная…";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Імя новай зьменнай:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "дазволіць зацьвярджэньне";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "з:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

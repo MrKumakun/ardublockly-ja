@@ -287,6 +287,7 @@ Blockly.Msg.ME = "எனக்கு";
 Blockly.Msg.NEW_VARIABLE = "புதிய மாறிலி...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "புதிய மாறிலியின் பெயர்:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "வாக்குமூலங்களை அனுமதிக்கவும்";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "இத்துடன்";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

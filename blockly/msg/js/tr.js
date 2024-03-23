@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Beni";
 Blockly.Msg.NEW_VARIABLE = "Yeni değişken...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Yeni değişken ismi :";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "Eğer ifadelerine izin ver";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "ile :";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

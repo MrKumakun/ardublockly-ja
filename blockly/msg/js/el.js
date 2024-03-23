@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Εγώ";
 Blockly.Msg.NEW_VARIABLE = "Νέα μεταβλητή...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Νέο όνομα μεταβλητής:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "να επιτρέπονται οι δηλώσεις";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "με:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://el.wikipedia.org/wiki/%CE%94%CE%B9%CE%B1%CE%B4%CE%B9%CE%BA%CE%B1%CF%83%CE%AF%CE%B1_%28%CF%85%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CF%83%CF%84%CE%AD%CF%82%29";

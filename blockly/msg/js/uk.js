@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Я";
 Blockly.Msg.NEW_VARIABLE = "Нова змінна...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Нова назва змінної:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "-ий.";
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "дозволити дії";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "з:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://uk.wikipedia.org/wiki/Підпрограма";

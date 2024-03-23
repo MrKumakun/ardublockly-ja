@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Mech";
 Blockly.Msg.NEW_VARIABLE = "Nei Variabel...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Neie variabelen Numm:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "allow statements";  // untranslated
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "mat:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";  // untranslated

@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Mi";
 Blockly.Msg.NEW_VARIABLE = "Neuva variàbil...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nòm ëd la neuva variàbil:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "përmëtte le diciairassion";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "con:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";

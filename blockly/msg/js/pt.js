@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Eu";
 Blockly.Msg.NEW_VARIABLE = "Nova variável...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Nome da nova variável:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "permitir declarações";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "com:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "http://pt.wikipedia.org/wiki/Sub-rotina";

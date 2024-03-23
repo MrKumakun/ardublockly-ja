@@ -287,6 +287,7 @@ Blockly.Msg.ME = "Eu";
 Blockly.Msg.NEW_VARIABLE = "Variabilă nouă...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "Noul nume de variabilă:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
+Blockly.Msg.PROCEDURES_AFTER_PARAMS = ")";  // untranslated
 Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS = "permite declarațiile";
 Blockly.Msg.PROCEDURES_BEFORE_PARAMS = "cu:";
 Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = "https://en.wikipedia.org/wiki/Procedure_%28computer_science%29";
