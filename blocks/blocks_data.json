@@ -6,7 +6,7 @@
             "languages": ["en", "es"],
             "toolboxName": "Grove",
             "toolbox": [
-                "<category>",
+                "<category caticon=\"icon-cat icon-cat-grove\">",
                 "  <block type=\"grove_led\">",
                 "    <field name=\"CONNECTOR\">2</field>",
                 "      <value name=\"STATE\">",
