@@ -376,7 +376,7 @@ Ardublockly.setCompilerLocationHtml = function(newEl) {
   var compLocIp = document.getElementById('settings_compiler_location');
   if (compLocIp != null) {
     compLocIp.value = newEl.value || compLocIp.value ||
-        'Arduino IDE (Arduino.exe)の場所を入力してください';
+        'Arduino IDE (Arduino.exe)をインストールしてください';
     compLocIp.style.cssText = newEl.style.cssText;
   }
 };
