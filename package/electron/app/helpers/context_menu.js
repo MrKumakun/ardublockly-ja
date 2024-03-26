@@ -13,21 +13,21 @@
     };
 
     var cut = new MenuItem({
-        label: "Cut",
+        label: "切り取り",
         click: function () {
             document.execCommand("cut");
         }
     });
 
     var copy = new MenuItem({
-        label: "Copy",
+        label: "コピー",
         click: function () {
             document.execCommand("copy");
         }
     });
 
     var paste = new MenuItem({
-        label: "Paste",
+        label: "貼り付け",
         click: function () {
             document.execCommand("paste");
         }

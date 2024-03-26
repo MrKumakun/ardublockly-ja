@@ -343,7 +343,7 @@ var getHelpMenuData = function() {
                 label: 'ソースコード',
                 click: function() {
                     shell.openExternal(
-                        'https://github.com/carlosperate/ardublockly');
+                        'https://github.com/MrKumakun/ardublockly-ja');
                 }
             }, {
                 label: '不具合報告',
