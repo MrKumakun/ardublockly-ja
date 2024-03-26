@@ -152,6 +152,6 @@ limitations under the License.
 [16]: https://github.com/BlocklyDuino/BlocklyDuino
 [17]: blockly/README.md
 
-[desktop_screeshot]: http://carlosperate.github.io/ardublockly/images/screenshot_desktop_1.png
+[desktop_screeshot]: https://github.com/MrKumakun/ardublockly-ja/assets/159548828/0b6b2ee7-0908-43b1-9867-8e4b9a9ab8b0
 [web_screenshot_responsive]: http://carlosperate.github.io/ardublockly/images/screenshot_material_all_small.jpg
 [web_screenshot_classic]: http://carlosperate.github.io/ardublockly/images/screenshot_1.png
