@@ -189,6 +189,7 @@ class Gen_compressed(threading.Thread):
     params = [
         ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
         ("use_closure_library", "true"),
+        ("language_out", "ECMASCRIPT5_STRICT"),
         ("output_format", "json"),
         ("output_info", "compiled_code"),
         ("output_info", "warnings"),
@@ -215,6 +216,7 @@ class Gen_compressed(threading.Thread):
     params = [
         ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
         ("use_closure_library", "false"),
+        ("language_out", "ECMASCRIPT5_STRICT"),
         ("output_format", "json"),
         ("output_info", "compiled_code"),
         ("output_info", "warnings"),
@@ -245,6 +247,7 @@ class Gen_compressed(threading.Thread):
     params = [
         ("compilation_level", "SIMPLE_OPTIMIZATIONS"),
         ("use_closure_library", "false"),
+        ("language_out", "ECMASCRIPT5_STRICT"),
         ("output_format", "json"),
         ("output_info", "compiled_code"),
         ("output_info", "warnings"),
